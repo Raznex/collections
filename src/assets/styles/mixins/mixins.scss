@@ -1,14 +1,12 @@
-@mixin flex-column-center {
+@mixin flex-center(
+  $flex-direction: row,
+  $justify-content: center,
+  $align-items: center
+) {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
 }
 
 @mixin block {
@@ -19,13 +17,35 @@
 }
 
 @mixin text-style(
-  $font-size: 16px,
-  $line-height: 1.5,
+  $font-weight: 400,
+  $font-size: 14px,
+  $line-height: 16px,
   $color: #000,
   $text-align: center
 ) {
+  font-weight: $font-weight;
   font-size: $font-size;
   line-height: $line-height;
   color: $color;
   text-align: $text-align;
+}
+
+@mixin button-style(
+  $border-radius: 5px,
+  $padding: 10px,
+  $background-color: transparent,
+  $background-color-hover: #000
+) {
+  border-radius: $border-radius;
+  padding: $padding;
+  background-color: $background-color;
+  transition:
+    background-color 0.3s ease,
+    opacity 0.3s ease;
+  border: none;
+  opacity: 1;
+
+  &:hover {
+    background-color: $background-color-hover;
+  }
 }
