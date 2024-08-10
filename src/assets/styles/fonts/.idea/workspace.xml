@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b2e72145-4638-432c-bd0e-eb3b63664b28" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../../.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Docker-compose.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../JS/JS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../JS/ht.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../MyDiplomaToYP.fig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../express-mesto-gha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../how-to-learn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../how-to-learn.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../lostwork/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../lostwork/.idea/lostwork.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../lostwork/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../lostwork/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../lostwork/mesto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../mesto" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../mesto-react" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../movies-explorer-api" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../movies-explorer-frontend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/.nojekyll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/NeoBank" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/XML homework.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/Задание 1/cars.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/Задание 1/engine.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/Задание 1/pages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/Задание 2/errors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/XML homework/Задание 3/schema.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Advantage/_Advantage.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/ChooseCard/_ChooseCard.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Content/_Content.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Map/_Map.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Page/_Page.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Rate/_Rate.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-1/styles/Subscribe/_Subscribe.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-2/Api/GetChangeValue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-2/Api/GetNewsApi.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-2/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-2/components/slider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/Modules/Module-2/styles/News/_News.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/NunitoSans-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/NunitoSans-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/Rubik.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/Rubik.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/Rubikmedium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/Rubikmedium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/_fonts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/ubuntubold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/ubuntubold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/ubuntumedium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/fonts/ubuntumedium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/Map__global.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/Transfer_long_left_light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/Transfer_long_right_light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/advantage__illustration.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/advantage__mark.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/burse.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/header__menu.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/letter.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/icon/send.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/cardImage1 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/cardImage2 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/cardImage3 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/cardImage4 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/demo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/images/logo_neoflex.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/normalize/normalize.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/styles/Footer/_Footer.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/styles/Header/_Header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/common/assets/utils/Constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/layout/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/layout/index.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../neoflex/src/layout/index.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../pr1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../react-mesto-api-full-gha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../react-mesto-auth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../russian-travel" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/.editorconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/.eslintignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/.eslintrc.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/constants/interface.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/fonts/Inter-Medium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/fonts/Inter-Medium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/fonts/Inter-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/fonts/Inter-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/fonts/_fonts.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/Arrow.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/OpenPage.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/PasswordEye.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/PasswordEyeOpen.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/Succes.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/lope.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/Arrow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/Lope.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/OpenPage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/PasswordEye.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/PasswordEyeOpen.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/Succes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/icon/moduleIcon/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/common/assets/normalize/_reset.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/App/App.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Header/Header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Header/_Header.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Input/_Input.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Login/Login.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Login/_Login.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Main/Main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Alyans/testovoe_zadanie/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Main/Task/Task.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Alyans/testovoe_zadanie/frontend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Main/Task/_Task.scss" beforeDir="false" afterPath="$PROJECT_DIR$/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Main/_Main.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Menu/Menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/Main/Main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Menu/_Menu.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/Main/Main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Page/_Page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/Model/Model.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Register/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../../components/Model/Model.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Register/_Register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../utils/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/Task/Task.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/components/TaskCards/TaskCards.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/layout/Style/Content/_Content.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/react-app-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/src/setupTests.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../taskmanager/tsconfig.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../test-neoflex" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training.rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/.idea/training.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../training/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/.idea/untitled.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/gg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../untitled/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-BlackItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-ExtraBoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-ExtraBoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-ExtraLight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-Light.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-LightItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-LightItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-MediumItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter-SemiBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Inter Web/Inter.var.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/.idea/Rubik.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubik.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubik.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubik.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblack.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblack.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblack.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblackitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblackitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikblackitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbolditalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbolditalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikbolditalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklight.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklightitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklightitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubiklightitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmedium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmedium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmedium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmediumitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmediumitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/Rubikmediumitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Rubik/rubik.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/.idea/Ubuntu.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntu.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntu.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntu.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntu.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubold.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubolditalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubolditalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntubolditalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntuitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntuitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntuitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulight.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulight.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulightitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulightitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntulightitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumedium.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumedium.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumedium.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumediumitalic.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumediumitalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/Ubuntu/ubuntumediumitalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Black.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Black.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-BlackItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-BlackItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Bold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Bold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-BoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-BoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraBold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraBoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraBoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraLight.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraLight.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraLightItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-ExtraLightItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Italic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Italic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Light.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Light.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-LightItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-LightItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Regular.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-Regular.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-SemiBold.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-SemiBold.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-SemiBoldItalic.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/NunitoSans-SemiBoldItalic.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/nunitosans.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Шрифты/nunito/nunitosans.zip" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
+  <component name="ProjectId" id="2hJsvIa5BMEIDp9pFfpZxSSaiDf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/mypracticeroom/collection/src/assets/fonts",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b2e72145-4638-432c-bd0e-eb3b63664b28" name="Changes" comment="" />
+      <created>1717323743308</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1717323743308</updated>
+      <workItem from="1717323744312" duration="74000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
