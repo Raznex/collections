@@ -4,7 +4,6 @@
 },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
@@ -12,14 +11,13 @@
   ],
   "ignorePatterns": [
   "dist",
-  ".eslintrc.json",
   "postcss.config.cjs"
 ],
     "parserOptions": {
   "ecmaVersion": "latest",
       "sourceType": "module"
 },
-  "plugins": ["@typescript-eslint", "react", "react-refresh", "import"],
+  "plugins": [ "react", "react-refresh", "import"],
     "rules": {
       "prettier/prettier": ["warn", { "endOfLine": "auto" }],
       "react-refresh/only-export-components": [
