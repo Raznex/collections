@@ -1,7 +1,7 @@
 @import '../../assets/styles/mixins/mixins';
 @import '../../assets/styles/colors/colors';
 
-.login {
+.register {
   @include block(530px);
   margin-top: 90px;
 
@@ -33,14 +33,16 @@
       $background-color: $orange,
       $background-color-hover: $orange-hover
     );
-    width: 150px;
     margin-top: 10px;
   }
 
   &__change-password {
     @include text-style(400, 12px, 14px, $input-gray, left);
     text-decoration: none;
-    border-bottom: 1px solid $input-gray;
     @include opacityHover();
+
+    &_span {
+      border-bottom: 1px solid $input-gray;
+    }
   }
 }
