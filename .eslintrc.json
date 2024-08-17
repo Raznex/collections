@@ -4,7 +4,6 @@
 },
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
@@ -19,7 +18,7 @@
   "ecmaVersion": "latest",
       "sourceType": "module"
 },
-  "plugins": ["@typescript-eslint", "react", "react-refresh", "import"],
+  "plugins": ["react", "react-refresh", "import"],
     "rules": {
       "prettier/prettier": ["warn", { "endOfLine": "auto" }],
       "react-refresh/only-export-components": [
@@ -56,6 +55,7 @@
         }
       ]
     }
-  ]
+  ],
+      "no-unused-vars": "off"
 }
 }

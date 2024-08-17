@@ -1,0 +1,16 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.language {
+  @include flex-center();
+  color: white;
+
+  &__button-lang {
+    @include button-style(0, 7px 10px, transparent, transparent);
+    @include text-style($color: white);
+
+    &_active {
+      color: $orange;
+    }
+  }
+}
