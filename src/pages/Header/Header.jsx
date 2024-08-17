@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import './Header.scss';
-import avatar from '../../assets/icons/vombat-1.jpg';
+import avatar from '../../assets/icons/panda.jpg';
+import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 const Header = () => {
   const userAuthorized = true;
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -43,13 +44,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className='header__account'>
-          <div className='header__language'>
-            <button className='header__button-lang header__button-lang_active'>
-              ru
-            </button>
-            <p>/</p>
-            <button className='header__button-lang'>en</button>
-          </div>
+          <LanguageButtons />
           {userAuthorized ? (
             <div className='header__account-settings'>
               <button
