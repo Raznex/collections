@@ -3,6 +3,12 @@
 .app {
   width: 100%;
   height: 100vh;
-  @include flex-center(column, space-between);
+  @include flex-center(column);
   font-family: Inter, Arial, serif;
+
+  &__main {
+    @include flex-center($align-items: flex-start);
+    width: 100%;
+    flex: 1;
+  }
 }
