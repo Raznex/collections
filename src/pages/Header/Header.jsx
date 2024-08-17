@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import './Header.scss';
-import avatar from '../../assets/icons/vombat-1.jpg';
+import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 const Header = () => {
   const userAuthorized = true;
