@@ -1,0 +1,15 @@
+@import '../../assets/styles/mixins/mixins';
+
+.cards {
+  @include flex-center($justify-content: flex-start, $align-items: flex-start);
+  max-width: 1220px;
+  margin: 20px 0 90px;
+  height: 100vh;
+
+  &__container {
+    @include flex-center();
+    flex-wrap: wrap;
+    gap: 30px 20px;
+    margin: 70px 0 80px;
+  }
+}

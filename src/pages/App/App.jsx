@@ -1,13 +1,14 @@
 import './App.scss';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import Card from '../../components/Card/Card';
+import CardList from '../../components/CardList/CardList';
+import Catalog from '../../components/Catalog/Catalog';
 
 const App = () => {
   return (
     <div className='app'>
       <Header />
-      <Card />
+      <Catalog />
       <Footer />
     </div>
   );
