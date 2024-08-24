@@ -3,7 +3,7 @@ import './Header.scss';
 import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 const Header = () => {
-  const userAuthorized = true;
+  const userAuthorized = false;
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -83,10 +83,12 @@ const Header = () => {
             </div>
           ) : (
             <>
-              <button className='header__button-autorization'>
+              <a href='/register' className='header__autorization'>
                 Регистрация
-              </button>
-              <button className='header__button-autorization'>Войти</button>
+              </a>
+              <a href='/login' className='header__autorization'>
+                Войти
+              </a>
             </>
           )}
         </div>

@@ -1,14 +1,16 @@
 import './App.scss';
+import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
-import CardList from '../../components/CardList/CardList';
-import Catalog from '../../components/Catalog/Catalog';
+import Card from '../../components/Card/Card';
 
 const App = () => {
   return (
     <div className='app'>
       <Header />
-      <Catalog />
+      <main className='app__main'>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );

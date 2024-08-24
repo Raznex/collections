@@ -1,0 +1,53 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.auction {
+  margin-top: 30px;
+  background-color: $light-gray;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+
+  &__price {
+    @include flex-center($justify-content: space-between);
+    width: 100%;
+  }
+
+  &__market-price {
+    @include text-style(500, 20px, 24px $black);
+
+    &_currency {
+      font-weight: 600;
+    }
+  }
+
+  &__voted {
+    margin: 10px 0 20px;
+    @include text-style(500, 16px, 19px, $input-gray, left);
+  }
+
+  &__form {
+    @include flex-center();
+    margin: 15px 0;
+    gap: 15px;
+  }
+
+  &__input {
+    @include input-style(
+      $background-color: transparent,
+      $border: 1px solid $input-gray
+    );
+  }
+
+  &__sumbit {
+    @include button-style(5px, 10px 15px, transparent, $black);
+    @include text-style(500, 16px, 19px, $black);
+    width: 130px;
+    height: 48px;
+    border: 1px solid $input-gray;
+  }
+
+  &__history {
+    @include text-style($color: $input-gray, $text-align: left);
+  }
+}
