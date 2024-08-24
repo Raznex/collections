@@ -1,0 +1,164 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.profile {
+  @include block();
+  @include flex-center($align-items: flex-start);
+  margin-top: 120px;
+
+  &__info {
+    @include flex-center(column);
+    margin-right: 85px;
+  }
+
+  &__avatar {
+    @include flex-center();
+    width: 255px;
+    height: 255px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  &__avatar-input {
+    opacity: 0;
+    @include flex-center();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__change-avatar {
+    @include flex-center();
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: $img-background-gray;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__nickname {
+    @include text-style(500, 16px, 19px, $input-gray);
+    margin: 10px 0;
+  }
+
+  &__name {
+    @include input-style($background-color: transparent);
+    @include text-style(500, 25px, 30px, $black);
+    cursor: default;
+
+    &_active {
+      border: 1px solid $input-gray;
+      cursor: auto;
+    }
+  }
+
+  &__date {
+    @include text-style(500, 12px, 16px, $input-gray);
+    margin-top: 10px;
+  }
+
+  &__settings {
+    @include flex-center(column, flex-start, flex-start);
+    width: 100%;
+  }
+
+  &__email {
+    @include input-style($background-color: transparent);
+    padding-left: 0;
+    @include text-style(600, 25px, 30px, $black, left);
+    cursor: default;
+    margin: 40px 0;
+
+    &_active {
+      border: 1px solid $input-gray;
+      padding-left: 10px;
+      cursor: auto;
+    }
+  }
+
+  &__subtitle {
+    @include text-style(600, 18px, 19px, $black);
+  }
+
+  &__location {
+    @include flex-center(column, center, flex-start);
+    width: 100%;
+    padding: 40px 0;
+    border-color: $input-gray;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    gap: 15px;
+  }
+
+  &__city {
+    @include input-style($background-color: transparent);
+    padding-left: 0;
+    height: 50px;
+    @include text-style(500, 16px, 19px, $black, left);
+
+    &_active {
+      background-color: $select-gray;
+      padding-left: 10px;
+      cursor: auto;
+    }
+  }
+
+  &__inputs {
+    @include flex-center(row, flex-start, flex-start);
+    gap: 80px;
+
+    &_left {
+      @include flex-center(column, flex-start, flex-start);
+      gap: 15px;
+    }
+  }
+
+  &__buttons {
+    @include flex-center();
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  &__button {
+    @include button-style(5px, 15px, $red, $red-hover, $color: white);
+    @include text-style(600, 16px, 19px, $white);
+    width: 235px;
+
+    &_pass {
+      @include button-style(
+        5px,
+        15px,
+        $button-gray,
+        $button-gray-hover,
+        $color: white
+      );
+    }
+    &_edit {
+      @include button-style(
+        5px,
+        15px,
+        $dark-charcoal,
+        $gray-hover-pass,
+        $color: white
+      );
+    }
+  }
+}

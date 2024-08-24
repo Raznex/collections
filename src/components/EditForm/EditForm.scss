@@ -26,10 +26,25 @@
     }
   }
 
+  &__currency {
+    position: absolute;
+    right: 0;
+  }
+
+  &__error {
+    margin-top: 5px;
+    @include text-style($color: $red);
+  }
+
   &__label {
     @include text-style(500, 20px, 24px, $input-gray);
     margin-right: 60px;
     flex-shrink: 0;
+  }
+
+  &__input-container {
+    position: relative;
+    @include flex-center(column, center, flex-start);
   }
 
   &__input {
@@ -147,5 +162,23 @@
   &__buttons {
     @include flex-center();
     gap: 20px;
+  }
+
+  &__button {
+    @include text-style(600, 16px, 19px, $white, center);
+    @include button-style(
+      $padding: 15px,
+      $background-color: $orange,
+      $background-color-hover: $orange-hover
+    );
+    width: 235px;
+
+    &_archieve {
+      @include button-style(
+        $padding: 15px,
+        $background-color: $button-gray,
+        $background-color-hover: $button-gray-hover
+      );
+    }
   }
 }

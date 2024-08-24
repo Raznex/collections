@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import './CreateInput.scss';
 
 const CreateInput = React.forwardRef(
-  ({ value, onChange, onBlur, name, error, placeholder }, ref) => (
+  ({ value, onChange, onBlur, name, error, placeholder, location }, ref) => (
     <input
       ref={ref}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
       name={name}
-      className={`create__input ${error ? 'create__input_errors' : ''}`}
+      className={`create__input ${error ? 'create__input_errors' : ''} ${location ? 'create__input_location' : ''}`}
       placeholder={placeholder}
     />
   )
