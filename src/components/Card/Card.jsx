@@ -2,7 +2,16 @@ import React, { useState } from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
 
-const Card = ({ id, title, category, date, product }) => {
+const Card = ({
+  id,
+  title,
+  manufacturer,
+  category,
+  date,
+  product,
+  description,
+  view,
+}) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
@@ -10,7 +19,7 @@ const Card = ({ id, title, category, date, product }) => {
   };
 
   return (
-    <div className='card'>
+    <div className={`card card--${view}`}>
       <div className='card__img-container'>
         <input
           type='checkbox'
@@ -29,7 +38,14 @@ const Card = ({ id, title, category, date, product }) => {
           ></div>
         </div>
         <div className='card__box'>
-          <p className='card__category'>{category}</p>
+          <p className='card__info'>
+            {view === 'list'
+              ? `Производитель: ${manufacturer}`
+              : `Категория: ${category}`}
+          </p>
+          {view === 'list' && (
+            <p className='card__description-text'>{description}</p>
+          )}
           <p className='card__date'>{date}</p>
         </div>
       </div>

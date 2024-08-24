@@ -88,15 +88,15 @@
   }
 
   &__view-list {
+    background-image: url('../../assets/icons/Vector_view-tile.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__view-tile {
     background-image: url('../../assets/icons/Vector_view-list.svg');
     background-repeat: no-repeat;
     background-position: center;
     margin-right: 16px;
-  }
-
-  &__view-tile {
-    background-image: url('../../assets/icons/Vector_view-tile.svg');
-    background-repeat: no-repeat;
-    background-position: center;
   }
 }

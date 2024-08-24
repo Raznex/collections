@@ -25,18 +25,18 @@ const Catalog = () => {
           <p className='catalog__sort'>Сортировка</p>
           <div className='catalog__switcher'>
             <button
-              className={`catalog__view-button catalog__view-list ${activeView === 'list' ? 'active' : ''}`}
-              aria-label='List View'
-              onClick={() => setActiveView('list')}
-            ></button>
-            <button
               className={`catalog__view-button catalog__view-tile ${activeView === 'tile' ? 'active' : ''}`}
               aria-label='Tile View'
               onClick={() => setActiveView('tile')}
             ></button>
+            <button
+              className={`catalog__view-button catalog__view-list ${activeView === 'list' ? 'active' : ''}`}
+              aria-label='List View'
+              onClick={() => setActiveView('list')}
+            ></button>
           </div>
         </div>
-        <CardList />
+        <CardList view={activeView} />
       </div>
     </div>
   );
