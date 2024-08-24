@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import Input from '../../components/Input/Input';
+import InputLogin from '../../components/InputLogin/InputLogin';
 import './Login.scss';
 const Login = () => {
   const {
@@ -28,7 +28,7 @@ const Login = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.email}
                 placeholder={'Email/Никнейм'}
@@ -47,7 +47,7 @@ const Login = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.password}
                 placeholder={'Password'}

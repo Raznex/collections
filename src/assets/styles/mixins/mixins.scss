@@ -36,7 +36,8 @@
   $border-radius: 5px,
   $padding: 10px,
   $background-color: transparent,
-  $background-color-hover: $black
+  $background-color-hover: $black,
+  $color: white
 ) {
   border-radius: $border-radius;
   padding: $padding;
@@ -49,6 +50,7 @@
 
   &:hover {
     background-color: $background-color-hover;
+    color: $color;
   }
 }
 
@@ -57,17 +59,20 @@
   $border-radius: 5px,
   $padding: 10px 15px,
   $border-active: 1px solid $orange,
-  $placeholder-color: $button-gray
+  $placeholder-color: $button-gray,
+  $border: none
 ) {
   background-color: $background-color;
   border-radius: $border-radius;
   padding: 10px 15px;
   outline: none;
-  border: none;
+  border: $border;
   width: 100%;
+  cursor: pointer;
 
   &:focus {
     border: $border-active;
+    cursor: auto;
   }
 
   &::placeholder {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Input.scss';
 
-const Input = React.forwardRef(
+const InputLogin = React.forwardRef(
   ({ value, onChange, onBlur, name, error, placeholder }, ref) => (
     <input
       ref={ref}
@@ -16,9 +16,9 @@ const Input = React.forwardRef(
   )
 );
 
-Input.displayName = 'Input';
+InputLogin.displayName = 'Input';
 
-Input.propTypes = {
+InputLogin.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
@@ -27,4 +27,4 @@ Input.propTypes = {
   placeholder: PropTypes.string,
 };
 
-export default Input;
+export default InputLogin;
