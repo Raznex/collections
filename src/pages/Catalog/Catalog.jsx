@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Catalog.scss';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
+import CardList from '../../components/CardList/CardList';
 
 const Catalog = () => {
+  const [activeView, setActiveView] = useState('list');
+
   return (
     <div className='catalog'>
       <div className='catalog__left-block'>
@@ -21,15 +25,18 @@ const Catalog = () => {
           <p className='catalog__sort'>Сортировка</p>
           <div className='catalog__switcher'>
             <button
-              className='catalog__view-button catalog__view-list'
+              className={`catalog__view-button catalog__view-list ${activeView === 'list' ? 'active' : ''}`}
               aria-label='List View'
+              onClick={() => setActiveView('list')}
             ></button>
             <button
-              className='catalog__view-button catalog__view-tile'
+              className={`catalog__view-button catalog__view-tile ${activeView === 'tile' ? 'active' : ''}`}
               aria-label='Tile View'
+              onClick={() => setActiveView('tile')}
             ></button>
           </div>
         </div>
+        <CardList />
       </div>
     </div>
   );

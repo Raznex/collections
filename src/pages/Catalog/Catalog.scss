@@ -1,0 +1,102 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.catalog {
+  @include flex-center(
+    row,
+    $justify-content: flex-start,
+    $align-items: flex-start
+  );
+  @include block();
+  margin: 44px 0;
+  width: 100%;
+
+  &__left-block {
+    @include flex-center(column, space-between, $align-items: flex-start);
+    max-width: 255px;
+    margin-right: 85px;
+  }
+
+  &__title {
+    @include text-style(600, 30px, 36px, $black, left);
+    margin-bottom: 30px;
+  }
+
+  &__search-box {
+    @include flex-center(row, space-between, $align-items: center);
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px 10px;
+    position: relative;
+    margin-bottom: 30px;
+
+    &:focus-within {
+      border-color: $orange;
+    }
+  }
+
+  &__search-input {
+    border: none;
+    outline: none;
+  }
+
+  &__search-button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    border: none;
+    background-color: transparent;
+    background-image: url('../../assets/icons/Vector_search-icon.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+  }
+
+  &__right-block {
+    @include flex-center(column);
+    width: 100%;
+  }
+
+  &__box {
+    @include flex-center(row, space-between, center);
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__switcher {
+    @include flex-center(row, space-between, center);
+    width: 88px;
+    height: 36px;
+  }
+
+  &__view-button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 10px;
+
+    &.active {
+      background-color: $gray;
+    }
+  }
+
+  &__view-list {
+    background-image: url('../../assets/icons/Vector_view-list.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-right: 16px;
+  }
+
+  &__view-tile {
+    background-image: url('../../assets/icons/Vector_view-tile.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
