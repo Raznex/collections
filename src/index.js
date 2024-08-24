@@ -6,6 +6,8 @@ import App from './pages/App/App';
 import Login from './pages/Login/Login';
 import Card from './components/Card/Card';
 import Register from './pages/Register/Register';
+import Product from './pages/Product/Product';
+import EditingModel from './pages/EditingModel/EditingModel';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Card />,
+      },
+      {
+        path: '/product',
+        element: <Product />,
+      },
+      {
+        path: '/editmodel',
+        element: <EditingModel />,
       },
     ],
   },

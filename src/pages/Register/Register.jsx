@@ -1,6 +1,6 @@
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import Input from '../../components/Input/Input';
+import InputLogin from '../../components/InputLogin/InputLogin';
 import './Register.scss';
 const Register = () => {
   const {
@@ -38,7 +38,7 @@ const Register = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.email}
                 placeholder={'Email/Никнейм'}
@@ -57,7 +57,7 @@ const Register = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.userName}
                 placeholder={'UserName/Никнейм'}
@@ -76,7 +76,7 @@ const Register = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.password}
                 placeholder={'Password'}
@@ -96,7 +96,7 @@ const Register = () => {
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
-              <Input
+              <InputLogin
                 {...field}
                 error={!!errors.controllPassword}
                 placeholder={'Repeat password'}

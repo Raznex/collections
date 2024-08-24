@@ -1,0 +1,9 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.create__input {
+  @include input-style($white, 5px, 15px, $border: 1px solid $input-gray);
+  @include text-style($font-weight: 500, $text-align: left);
+  height: 50px;
+  width: 425px;
+}

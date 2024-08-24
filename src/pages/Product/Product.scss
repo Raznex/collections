@@ -1,0 +1,160 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.product {
+  margin-top: 50px;
+  @include block();
+  @include flex-center(column, center, flex-start);
+
+  &__container {
+    width: 100%;
+    @include flex-center(row, space-between, flex-start);
+    gap: 20px;
+  }
+
+  &__slider {
+    width: 50%;
+  }
+
+  &__right {
+    width: 50%;
+    @include flex-center(column);
+
+    &_up {
+      width: 100%;
+      @include flex-center(row, space-between, flex-start);
+    }
+  }
+
+  &__info {
+    @include flex-center(column, center, flex-start);
+    gap: 25px;
+  }
+
+  &__title {
+    @include text-style(600, 30px, 36px, $black, left);
+  }
+
+  &__settings {
+    list-style: none;
+    @include flex-center(column, center, flex-start);
+    gap: 15px;
+  }
+
+  &__item {
+    @include text-style(500, 16px 19px, $black, left);
+    display: flex;
+    align-items: flex-start;
+    &_span {
+      color: $input-gray;
+    }
+  }
+
+  &__buy {
+    width: 170px;
+    @include button-style(30px, 12px 15px, $orange, $orange-hover);
+    @include text-style(600, 16px, 19px, $white);
+  }
+
+  &__editing {
+    @include flex-center(column, center, flex-end);
+    gap: 25px;
+  }
+
+  &__tools {
+    @include flex-center();
+    gap: 10px;
+  }
+
+  &__tool {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    width: 30px;
+    height: 30px;
+    transition:
+      background-image 0.3s ease-in-out,
+      opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 1;
+  }
+
+  &__like {
+    background-image: url('../../assets/icons/like.svg');
+
+    &:hover {
+      background-image: url('../../assets/icons/like-hover.png');
+    }
+
+    &_active {
+      background-image: url('../../assets/icons/like-active.png');
+
+      &:hover {
+        background-image: url('../../assets/icons/like-active.png');
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__archive {
+    background-image: url('../../assets/icons/iconoir_archive.svg');
+
+    &:hover {
+      background-image: url('../../assets/icons/iconoir_archive_hover.svg');
+    }
+
+    &_active {
+      background-image: url('../../assets/icons/iconoir_archive_active.svg');
+
+      &:hover {
+        background-image: url('../../assets/icons/iconoir_archive_active.svg');
+        opacity: 0.7;
+      }
+    }
+  }
+  &__pencil {
+    background-image: url('../../assets/icons/gravity-ui_pencil-to-line.svg');
+
+    &:hover {
+      background-image: url('../../assets/icons/gravity-ui_pencil-to-line_hover.svg');
+    }
+  }
+
+  &__price {
+    background-color: $light-gray;
+    border-radius: 45px;
+    padding: 10px 50px;
+    width: 210px;
+    @include text-style(500, 20px, 24px, $input-gray, left);
+
+    &_span {
+      @include text-style(600, 25px, 40px, $orange, left);
+    }
+  }
+
+  &__description {
+    margin: 60px 0;
+    @include flex-center(column, flex-start, flex-start);
+
+    &_title {
+      @include text-style(600, 30px, 36px, $black, left);
+    }
+
+    &_text {
+      @include text-style(500, 20px, 27px, $black, left);
+    }
+  }
+
+  &__date {
+    @include text-style(500, 14px, 27px, $input-gray, left);
+    margin-top: 30px;
+  }
+
+  &__back {
+    @include text-style(400, 20px, 20px $black);
+    text-decoration: none;
+    margin-bottom: 25px;
+    @include opacityHover();
+  }
+}

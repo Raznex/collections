@@ -1,0 +1,12 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.editingmodel {
+  @include block();
+  margin: 60px 0;
+
+  &__title {
+    @include text-style(600, 30px, 36px, $black, left);
+    margin-bottom: 45px;
+  }
+}
