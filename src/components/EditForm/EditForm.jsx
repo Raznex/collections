@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import CreateInput from '../CreateInput/CreateInput';
-import './EditForm.scss';
 import { Plus, Trash2 } from 'lucide-react';
-import { useParams } from 'react-router-dom';
+import CreateInput from '../CreateInput/CreateInput';
+
+import './EditForm.scss';
+
+import CurrencySelect from '../CurrencySelect/CurrencySelect';
 
 const EditForm = () => {
   const [images, setImages] = useState([]);
@@ -14,8 +16,10 @@ const EditForm = () => {
     modelCode: '',
     category: '',
     year: '',
+    location: '',
   });
   const [damage, setDamage] = useState('Не повреждена');
+  const [currency, setCurrency] = useState('RUB');
   const page = window.location.pathname;
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
@@ -41,9 +45,7 @@ const EditForm = () => {
   } = useForm({
     defaultValues,
   });
-
   const onSubmit = (data) => console.log(data, damage);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='editForm'>
       <div className='editForm__info'>
@@ -52,45 +54,49 @@ const EditForm = () => {
             <label htmlFor='modelName' className='editForm__label'>
               Название модели
             </label>
-            <Controller
-              name='modelName'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.modelName}
-                  placeholder={'Название модели'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='modelName'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.modelName}
+                    placeholder={'Название модели'}
+                  />
+                )}
+              />
+              {errors.modelName && (
+                <p className='editForm__error'>{errors.modelName.message}</p>
               )}
-            />
-            {errors.modelName && (
-              <p className='editForm__error'>{errors.modelName.message}</p>
-            )}
+            </div>
           </div>
           <div className='editForm__input'>
             <label htmlFor='modelName' className='editForm__label'>
               Производитель
             </label>
-            <Controller
-              name='manufacturer'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.manufacturer}
-                  placeholder={'Производитель'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='manufacturer'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.manufacturer}
+                    placeholder={'Производитель'}
+                  />
+                )}
+              />
+              {errors.manufacturer && (
+                <p className='editForm__error'>{errors.manufacturer.message}</p>
               )}
-            />
-            {errors.manufacturer && (
-              <p className='editForm__error'>{errors.manufacturer.message}</p>
-            )}
+            </div>
           </div>
         </div>
         <div className='editForm__inputs editForm__inputs_right1'>
@@ -98,23 +104,28 @@ const EditForm = () => {
             <label htmlFor='modelName' className='editForm__label'>
               Цена
             </label>
-            <Controller
-              name='price'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.modelName}
-                  placeholder={'Цена'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='price'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.modelName}
+                    placeholder={'Цена'}
+                  />
+                )}
+              />
+              {errors.price && (
+                <p className='editForm__error'>{errors.price.message}</p>
               )}
-            />
-            {errors.price && (
-              <p className='editForm__error'>{errors.price.message}</p>
-            )}
+              <div className='editForm__currency'>
+                <CurrencySelect setCurrency={setCurrency} currency={currency} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -125,67 +136,73 @@ const EditForm = () => {
             <label htmlFor='modelCode' className='editForm__label'>
               Код модели
             </label>
-            <Controller
-              name='modelCode'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.modelCode}
-                  placeholder={'Код модели'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='modelCode'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.modelCode}
+                    placeholder={'Код модели'}
+                  />
+                )}
+              />
+              {errors.modelCode && (
+                <p className='editForm__error'>{errors.modelCode.message}</p>
               )}
-            />
-            {errors.modelCode && (
-              <p className='editForm__error'>{errors.modelCode.message}</p>
-            )}
+            </div>
           </div>
           <div className='editForm__input'>
             <label htmlFor='category' className='editForm__label'>
               Категория
             </label>
-            <Controller
-              name='category'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.manufacturer}
-                  placeholder={'Категория'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='category'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.manufacturer}
+                    placeholder={'Категория'}
+                  />
+                )}
+              />
+              {errors.category && (
+                <p className='editForm__error'>{errors.category.message}</p>
               )}
-            />
-            {errors.category && (
-              <p className='editForm__error'>{errors.category.message}</p>
-            )}
+            </div>
           </div>
           <div className='editForm__input'>
             <label htmlFor='modelName' className='editForm__label'>
               Год выпуска
             </label>
-            <Controller
-              name='year'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.year}
-                  placeholder={'Год выпуска'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='year'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.year}
+                    placeholder={'Год выпуска'}
+                  />
+                )}
+              />
+              {errors.year && (
+                <p className='editForm__error'>{errors.year.message}</p>
               )}
-            />
-            {errors.year && (
-              <p className='editForm__error'>{errors.year.message}</p>
-            )}
+            </div>
           </div>
         </div>
         <div className='editForm__inputs editForm__inputs_right2'>
@@ -193,23 +210,26 @@ const EditForm = () => {
             <label htmlFor='location' className='editForm__label'>
               Место нахождения
             </label>
-            <Controller
-              name='location'
-              control={control}
-              rules={{
-                required: 'Поле обязательно для заполнения',
-              }}
-              render={({ field }) => (
-                <CreateInput
-                  {...field}
-                  error={!!errors.location}
-                  placeholder={'Место нахождения'}
-                />
+            <div className='editForm__input-container'>
+              <Controller
+                name='location'
+                control={control}
+                rules={{
+                  required: 'Поле обязательно для заполнения',
+                }}
+                render={({ field }) => (
+                  <CreateInput
+                    {...field}
+                    error={!!errors.location}
+                    location={'location'}
+                    placeholder={'Место нахождения'}
+                  />
+                )}
+              />
+              {errors.location && (
+                <p className='editForm__error'>{errors.location.message}</p>
               )}
-            />
-            {errors.location && (
-              <p className='editForm__error'>{errors.location.message}</p>
-            )}
+            </div>
           </div>
           <div className='editForm__input editForm__input_radio'>
             <p className='editForm__label'>Упаковка</p>
@@ -279,20 +299,25 @@ const EditForm = () => {
       </div>
       <h3 className='editForm__title'>Описание</h3>
       <div className='editForm__info'>
-        <textarea
+        <Controller
           name='description'
-          id='modelDescription'
-          cols='30'
-          rows='10'
-          placeholder='Описание'
-          className='editForm__textarea'
-        ></textarea>
+          control={control}
+          render={({ field }) => (
+            <textarea
+              {...field}
+              placeholder='Описание модели'
+              className='editForm__textarea'
+            />
+          )}
+        />
       </div>
       <div className='editForm__buttons'>
         {page === '/editmodel' ? (
           <>
             <button className='editForm__button'>Сохранить</button>
-            <button className='editForm__button'>В архив</button>
+            <button className='editForm__button editForm__button_archieve'>
+              В архив
+            </button>
           </>
         ) : (
           <button className='editForm__button'>Добавить модель</button>

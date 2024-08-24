@@ -6,4 +6,8 @@
   @include text-style($font-weight: 500, $text-align: left);
   height: 50px;
   width: 425px;
+
+  &_location {
+    width: 250px;
+  }
 }

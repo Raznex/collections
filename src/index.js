@@ -8,7 +8,8 @@ import Card from './components/Card/Card';
 import Register from './pages/Register/Register';
 import Product from './pages/Product/Product';
 import EditingModel from './pages/EditingModel/EditingModel';
-import Catalog from './pages/Catalog/Catalog';
+import AddModel from './pages/AddModel/AddModel';
+import Profile from './pages/Profile/Profile';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/',
-        element: <Catalog />,
+        element: <Card />,
       },
       {
         path: '/product',
@@ -34,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: '/editmodel',
         element: <EditingModel />,
+      },
+      {
+        path: '/addmodel',
+        element: <AddModel />,
+      },
+      {
+        path: '/profile',
+        element: <Profile />,
       },
     ],
   },
