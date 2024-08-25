@@ -10,6 +10,7 @@ import Product from './pages/Product/Product';
 import EditingModel from './pages/EditingModel/EditingModel';
 import AddModel from './pages/AddModel/AddModel';
 import Profile from './pages/Profile/Profile';
+import Catalog from './pages/Catalog/Catalog';
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/',
-        element: <Card />,
+        element: <Catalog />,
       },
       {
         path: '/product',

@@ -2,23 +2,58 @@
 @import '../../assets/styles/colors/colors';
 
 .card {
-  @include flex-center(column, space-between, center);
-  width: 320px;
-  height: 321px;
-  padding: 15px 15px;
+  @include flex-center(row, space-between, center); // List view default
+  width: 100%; // Full width for list view
+  padding: 15px;
   border-radius: 10px;
   box-shadow: 0 1px 11px 1px #00000012;
+  transition: all 0.3s ease;
+
+  &__img-container {
+    width: 30%; // 30% of the card width in list view
+    position: relative;
+    margin-right: 20px; // Add spacing between image and description
+  }
+
+  &__select-checkbox {
+    display: none;
+  }
+
+  &__select-checkbox + label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 21px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  &__select-checkbox:checked + label {
+    background-color: black;
+    background-image: url('../../assets/icons/ic_outline-check.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
+
+  &__select-checkbox:checked {
+    display: none;
+  }
 
   &__img {
     width: 100%;
-    height: 205px;
+    height: auto;
     object-fit: cover;
-    display: flex;
   }
 
   &__description {
     @include flex-center(column);
-    width: 100%;
+    width: 70%;
     gap: 5px;
   }
 
@@ -56,6 +91,39 @@
     @include text-style();
     width: 100%;
     color: $description-gray;
-    gap: 5px;
+    gap: 15px;
+  }
+
+  &__info {
+    @include text-style();
+    color: $description-gray;
+  }
+
+  &__description-text {
+    @include text-style();
+    color: $description-gray;
+    text-align: left;
+  }
+
+  &--tile {
+    @include flex-center(column, space-between, center);
+    width: 320px;
+    height: 321px;
+    padding: 15px 15px;
+
+    .card__img-container {
+      width: 100%;
+      height: 205px;
+      margin-right: 0; // Reset margin-right for tile view
+    }
+
+    .card__img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .card__description {
+      width: 100%;
+    }
   }
 }
