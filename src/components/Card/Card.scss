@@ -2,17 +2,16 @@
 @import '../../assets/styles/colors/colors';
 
 .card {
-  @include flex-center(row, space-between, center); // List view default
-  width: 100%; // Full width for list view
+  @include flex-center(row, space-between, center);
+  width: 100%;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 1px 11px 1px #00000012;
-  transition: all 0.3s ease;
 
   &__img-container {
-    width: 30%; // 30% of the card width in list view
+    width: 30%;
     position: relative;
-    margin-right: 20px; // Add spacing between image and description
+    margin-right: 20px;
   }
 
   &__select-checkbox {
@@ -70,7 +69,6 @@
     width: 22.5px;
     height: 20.8px;
     background-image: url('../../assets/icons/like.svg');
-    transition: background-image 0.3s ease-in-out;
     cursor: pointer;
 
     &:hover {
@@ -114,7 +112,7 @@
     .card__img-container {
       width: 100%;
       height: 205px;
-      margin-right: 0; // Reset margin-right for tile view
+      margin-right: 0;
     }
 
     .card__img {
