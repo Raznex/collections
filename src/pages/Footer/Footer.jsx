@@ -2,7 +2,7 @@ import './Footer.scss';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 
 const Footer = () => {
-  const userAuthorized = true;
+  const userAuthorized = false;
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -12,14 +12,22 @@ const Footer = () => {
             <li className='footer__link'>Главная</li>
             <li className='footer__link'>Каталог</li>
           </ul>
-          <ul className='footer__list'>
-            <li className='footer__link'>Мои модели</li>
-            <li className='footer__link'>Избранное</li>
-          </ul>
-          <ul className='footer__list'>
-            <li className='footer__link footer__link_acc'>Аккаунт</li>
-            <li className='footer__link footer__link_acc'>Выйти из аккаунта</li>
-          </ul>
+          {userAuthorized ? (
+            <>
+              <ul className='footer__list'>
+                <li className='footer__link'>Мои модели</li>
+                <li className='footer__link'>Избранное</li>
+              </ul>
+              <ul className='footer__list'>
+                <li className='footer__link footer__link_acc'>Аккаунт</li>
+                <li className='footer__link footer__link_acc'>
+                  Выйти из аккаунта
+                </li>
+              </ul>
+            </>
+          ) : (
+            ''
+          )}
           <LanguageButtons />
         </div>
       </div>

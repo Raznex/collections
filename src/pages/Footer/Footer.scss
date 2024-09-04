@@ -18,7 +18,8 @@
 
   &__menu {
     width: 50%;
-    @include flex-center(row, space-between);
+    @include flex-center(row, flex-end);
+    gap: 80px;
   }
 
   &__list {
@@ -34,6 +35,8 @@
 
   &__link {
     @include text-style($font-weight: 500, $color: $white, $text-align: left);
+    cursor: pointer;
+    @include opacityHover();
     &_acc {
       color: $gray;
     }

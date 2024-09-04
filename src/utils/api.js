@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseURL = 'http://80.249.147.48';
+const baseURL = 'http://dev.cars.nsspro.ru';
 
 export async function getAllModels() {
   try {
-    const res = await axios.get(`${baseURL}/json`);
+    const res = await axios.get(`${baseURL}/home_json`);
     return res.data;
   } catch (err) {
     console.log(err);

@@ -38,6 +38,7 @@ const Carousel = () => {
         infinity={true}
         showFullscreenButton={false}
         showPlayButton={false}
+        showNav={!!images.length}
       />
     </div>
   );
