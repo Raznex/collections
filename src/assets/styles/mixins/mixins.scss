@@ -72,7 +72,7 @@
   cursor: pointer;
 
   &:focus {
-    border: $border-active;
+    outline: $border-active;
     cursor: auto;
   }
 

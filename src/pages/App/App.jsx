@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -6,9 +6,10 @@ import Footer from '../Footer/Footer';
 import { getAllModels } from '../../utils/api';
 
 const App = () => {
+  const [cards, setCards] = useState([]);
   useEffect(() => {
     getAllModels().then((data) => {
-      console.log(data);
+      setCards(data);
     });
   }, []);
   return (

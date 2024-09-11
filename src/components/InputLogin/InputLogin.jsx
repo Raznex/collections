@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import './Input.scss';
 
 const InputLogin = React.forwardRef(
-  ({ value, onChange, onBlur, name, error, placeholder }, ref) => (
+  ({ type, value, onChange, onBlur, name, error, placeholder }, ref) => (
     <input
+      type={type}
       ref={ref}
       value={value}
       onChange={onChange}
