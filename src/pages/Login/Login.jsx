@@ -2,6 +2,9 @@ import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import InputLogin from '../../components/InputLogin/InputLogin';
 import './Login.scss';
+import { login } from '../../utils/autorize';
+import { useNavigate } from 'react-router-dom';
+import CSRFToken from '../../utils/csrfToken/csrfToken';
 const Login = () => {
   const {
     handleSubmit,
@@ -14,12 +17,17 @@ const Login = () => {
       password: '',
     },
   });
-
-  const onSubmit = (data) => console.log(data);
+  const navigate = useNavigate();
+  const onSubmit = (data) => {
+    login(data).then(() => {
+      navigate('/');
+    });
+  };
   return (
     <div className='login'>
       <h1 className='login__title'>Вход</h1>
       <form onSubmit={handleSubmit(onSubmit)} className='login__form'>
+        <CSRFToken />
         <div className='login__input-container'>
           <Controller
             name='email'
@@ -48,6 +56,7 @@ const Login = () => {
             }}
             render={({ field }) => (
               <InputLogin
+                type={'password'}
                 {...field}
                 error={!!errors.password}
                 placeholder={'Password'}

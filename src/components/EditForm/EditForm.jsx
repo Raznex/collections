@@ -45,7 +45,7 @@ const EditForm = () => {
   } = useForm({
     defaultValues,
   });
-  const onSubmit = (data) => console.log(data, damage);
+  const onSubmit = (data) => console.log({ damage, ...data });
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='editForm'>
       <div className='editForm__info'>

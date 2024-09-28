@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import InputLogin from '../../components/InputLogin/InputLogin';
 import './Register.scss';
-import { getCSRF, register, sendVerificationCode } from '../../utils/autorize';
+import { register, sendVerificationCode } from '../../utils/autorize';
 import CSRFToken from '../../utils/csrfToken/csrfToken';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
   const [hasCode, setHasCode] = useState(false);
-
+  const navigate = useNavigate();
   const {
     handleSubmit,
     watch,
@@ -27,9 +28,8 @@ const Register = () => {
 
   const onSubmit = (data) => {
     if (data.password === data.confirm_password) {
-      const { confirm_password, userName, ...formData } = data;
-      register(formData).then((res) => {
-        console.log(res);
+      register(data).then((res) => {
+        navigate('/login');
       });
     } else {
       errors.confirm_password = 'Пароли не совпадают';
@@ -136,7 +136,7 @@ const Register = () => {
           <div className='register__input-container'>
             <p className='register__text'>Код отправлен вам на почту</p>
             <Controller
-              name='csrfmiddlewaretoken'
+              name='code'
               control={control}
               rules={{
                 required: 'Поле обязательно для заполнения',

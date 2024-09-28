@@ -6,12 +6,6 @@ import Footer from '../Footer/Footer';
 import { getAllModels } from '../../utils/api';
 
 const App = () => {
-  const [cards, setCards] = useState([]);
-  useEffect(() => {
-    getAllModels().then((data) => {
-      setCards(data);
-    });
-  }, []);
   return (
     <div className='app'>
       <Header />

@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Catalog.scss';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import CardList from '../../components/CardList/CardList';
+import { getAllModels } from '../../utils/api';
 
 const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
-
+  const [cards, setCards] = useState([]);
+  useEffect(() => {
+    getAllModels().then((data) => {
+      setCards(data);
+    });
+  }, []);
   return (
     <div className='catalog'>
       <div className='catalog__left-block'>
