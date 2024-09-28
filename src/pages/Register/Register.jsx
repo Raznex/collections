@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import InputLogin from '../../components/InputLogin/InputLogin';
 import './Register.scss';
-import { register, sendVerificationCode } from '../../utils/autorize';
+import { getCSRF, register, sendVerificationCode } from '../../utils/autorize';
+import CSRFToken from '../../utils/csrfToken/csrfToken';
 
 const Register = () => {
   const [hasCode, setHasCode] = useState(false);
+
   const {
     handleSubmit,
     watch,
@@ -16,26 +18,26 @@ const Register = () => {
       email: '',
       password: '',
       userName: '',
-      controllPassword: '',
+      confirm_password: '',
       code: '',
     },
   });
   const password = watch('password');
-  const controllPassword = watch('controllPassword');
+  const confirm_password = watch('confirm_password');
 
   const onSubmit = (data) => {
-    if (data.password === data.controllPassword) {
-      const { controllPassword, userName, ...formData } = data;
+    if (data.password === data.confirm_password) {
+      const { confirm_password, userName, ...formData } = data;
       register(formData).then((res) => {
         console.log(res);
       });
     } else {
-      errors.controllPassword = 'Пароли не совпадают';
+      errors.confirm_password = 'Пароли не совпадают';
     }
   };
 
   const sendCode = (data) => {
-    sendVerificationCode(data.email).then((res) => {
+    sendVerificationCode(data).then((res) => {
       console.log(res);
       setHasCode(true);
     });
@@ -48,6 +50,7 @@ const Register = () => {
         onSubmit={hasCode ? handleSubmit(onSubmit) : handleSubmit(sendCode)}
         className='register__form'
       >
+        <CSRFToken />
         <div className='register__input-container'>
           <Controller
             name='email'
@@ -110,7 +113,7 @@ const Register = () => {
         </div>
         <div className='register__input-container'>
           <Controller
-            name='controllPassword'
+            name='confirm_password'
             control={control}
             rules={{
               validate: (value) => value === password || 'Пароли не совпадают',
@@ -120,20 +123,20 @@ const Register = () => {
               <InputLogin
                 type={'password'}
                 {...field}
-                error={!!errors.controllPassword}
+                error={!!errors.confirm_password}
                 placeholder={'Repeat password'}
               />
             )}
           />
-          {errors.controllPassword && (
-            <p className='register__error'>{errors.controllPassword.message}</p>
+          {errors.confirm_password && (
+            <p className='register__error'>{errors.confirm_password.message}</p>
           )}
         </div>
         {hasCode ? (
           <div className='register__input-container'>
             <p className='register__text'>Код отправлен вам на почту</p>
             <Controller
-              name='code'
+              name='csrfmiddlewaretoken'
               control={control}
               rules={{
                 required: 'Поле обязательно для заполнения',
