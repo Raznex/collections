@@ -1,0 +1,70 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.pagination {
+  @include flex-center(row, space-between, center);
+  width: 175px;
+  margin-top: 80px;
+
+  &__left,
+  &__right {
+    width: 29px;
+    height: 29px;
+    border-radius: 3px;
+    background-color: $light-gray;
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+
+    &.pagination__left {
+      background-image: url('../../assets/icons/Arrow left.svg');
+    }
+
+    &.pagination__right {
+      background-image: url('../../assets/icons/Arrow right.svg');
+    }
+  }
+
+  &__list {
+    @include flex-center(row, center, center);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 3px;
+    @include text-style(500, 16px);
+    background-color: $light-gray;
+  }
+
+  &__item {
+    width: 29px;
+    height: 29px;
+    @include flex-center(row, center, center);
+    cursor: pointer;
+
+    &:not(.inactive) {
+      background-color: $light-gray;
+    }
+
+    &:hover {
+      background-color: $orange;
+    }
+  }
+
+  &__dots {
+    @include flex-center(row, center, center);
+    width: 29px;
+    height: 29px;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    background-color: $light-gray;
+  }
+
+  .inactive {
+    background-color: $light-gray;
+    color: $orange;
+    pointer-events: none;
+  }
+}
