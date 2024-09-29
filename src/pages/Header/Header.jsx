@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './Header.scss';
+import { Link } from 'react-router-dom';
 import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 const Header = () => {
@@ -42,12 +43,12 @@ const Header = () => {
             Логотип
           </a>
           <ul className='header__menu'>
-            <li className='header__link'>
-              {' '}
-              <a href='/' className='header__logo'>
-                Каталог
-              </a>
-            </li>
+            <Link className='header__link' to={'/'}>
+              Каталог
+            </Link>
+            <Link className='header__link' to={'/'}>
+              Мои модели
+            </Link>
           </ul>
         </nav>
         <div className='header__account'>

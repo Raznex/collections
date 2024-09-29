@@ -43,6 +43,7 @@
     @include button-style(5px, 10px 15px, transparent, $black);
     @include text-style(500, 16px, 19px, $black);
     width: 130px;
+    text-wrap: nowrap;
     height: 48px;
     border: 1px solid $input-gray;
   }

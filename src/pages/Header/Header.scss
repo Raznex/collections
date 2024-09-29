@@ -23,6 +23,7 @@
   }
 
   &__menu {
+    @include flex-center();
     list-style: none;
     gap: 50px;
   }

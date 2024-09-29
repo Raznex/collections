@@ -10,3 +10,12 @@ export async function getAllModels() {
     console.log(err);
   }
 }
+
+export async function getDetailModel(elemId) {
+  try {
+    const res = await axios.get(`${baseURL}/model_details_json/${elemId}`);
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+}
