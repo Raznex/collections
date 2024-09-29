@@ -30,11 +30,15 @@ const router = createBrowserRouter([
         element: <Catalog />,
       },
       {
+        path: '/my-models',
+        element: <Catalog />,
+      },
+      {
         path: '/product/:id',
         element: <Product />,
       },
       {
-        path: '/editmodel',
+        path: '/editmodel/:id',
         element: <EditingModel />,
       },
       {

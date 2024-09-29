@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
+import productImage from '../../assets/icons/panda.jpg';
+import { addModelToFavourite } from '../../utils/api';
 
-const Card = ({
-  id,
-  title,
-  manufacturer,
-  category,
-  date,
-  product,
-  description,
-  view,
-}) => {
+const Card = ({ card, view }) => {
+  const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLikeClick = () => {
-    setIsLiked(!isLiked); // Переключение состояния
+    addModelToFavourite(card.id).then(() => {
+      setIsLiked(!isLiked);
+    });
   };
 
   return (
@@ -23,15 +20,20 @@ const Card = ({
       <div className='card__img-container'>
         <input
           type='checkbox'
-          id={`select-card-${id}`}
+          id={`select-card-${card.id}`}
           className='card__select-checkbox'
         />
-        <label htmlFor={`select-card-${id}`}></label>
-        <img src={product} alt={title} className='card__img' />
+        <label htmlFor={`select-card-${card.id}`}></label>
+        <img
+          src={productImage}
+          alt={card.collectable_name}
+          className='card__img'
+          onClick={() => navigate(`/product/${card.id}`)}
+        />
       </div>
       <div className='card__description'>
         <div className='card__container'>
-          <h2 className='card__name'>{title}</h2>
+          <h2 className='card__name'>{card.collectable_name}</h2>
           <div
             className={`card__like ${isLiked ? 'card__like_active' : ''}`}
             onClick={handleLikeClick}
@@ -40,25 +42,23 @@ const Card = ({
         <div className='card__box'>
           <p className='card__info'>
             {view === 'list'
-              ? `Производитель: ${manufacturer}`
-              : `Категория: ${category}`}
+              ? `Производитель: 24 октября`
+              : `Категория: Категория 1`}
           </p>
           {view === 'list' && (
-            <p className='card__description-text'>{description}</p>
+            <p className='card__description-text'>
+              Небольшое описание взятое из полноценной карточки модели.
+              Небольшое описание взятое из полноценной карточки модели.
+              Небольшое описание взятое из полноценной карточки модели.
+              Небольшое описание взятое из полноценной карточки модели.
+              Небольшое описание взятое из полноценной карточки модели.
+            </p>
           )}
-          <p className='card__date'>{date}</p>
+          <p className='card__date'>24 октября</p>
         </div>
       </div>
     </div>
   );
-};
-
-Card.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  product: PropTypes.string.isRequired,
 };
 
 export default Card;

@@ -43,12 +43,12 @@ const Header = () => {
             Логотип
           </a>
           <ul className='header__menu'>
-            <Link className='header__link' to={'/'}>
+            <a className='header__link' href='/'>
               Каталог
-            </Link>
-            <Link className='header__link' to={'/'}>
+            </a>
+            <a className='header__link' href='/my-models'>
               Мои модели
-            </Link>
+            </a>
           </ul>
         </nav>
         <div className='header__account'>

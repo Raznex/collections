@@ -2,15 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Auction from '../../components/Auction/Auction';
 import './Product.scss';
 import Carousel from '../../components/Carousel/Carousel';
-import { getDetailModel } from '../../utils/api';
-import { useParams } from 'react-router-dom';
+import { addModelToFavourite, getDetailModel } from '../../utils/api';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Product = () => {
-  const isLiked = true;
+  const [isLiked, setIsLiked] = useState(false);
   const [card, setCard] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const cardId = useParams().id;
+  const navigate = useNavigate();
+
   useEffect(() => {
     setIsLoading(true);
     getDetailModel(cardId)
@@ -23,6 +25,12 @@ const Product = () => {
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  const handleLikeClick = () => {
+    addModelToFavourite(card.id).then(() => {
+      setIsLiked(!isLiked);
+    });
+  };
 
   return (
     <section className='product'>
@@ -89,9 +97,11 @@ const Product = () => {
                     ></button>
                     <button
                       className={`product__tool product__pencil ${isLiked ? 'product__pencil_active' : ''}`}
+                      onClick={navigate(`editmodel/${card.id}`)}
                     ></button>
                     <button
                       className={`product__tool product__like ${isLiked ? 'product__like_active' : ''}`}
+                      onClick={handleLikeClick}
                     ></button>
                   </div>
                   <p className='product__price'>
