@@ -50,9 +50,7 @@ const CurrencySelect = ({ isEditing, currency, setCurrency }) => {
               return curr.value === currency;
             })?.label
           }
-          <ChevronDown
-            className={`currencySelect__arrow ${isEditing ? '' : 'currencySelect__arrow_disable'}`}
-          />
+          <ChevronDown className='currencySelect__arrow' />
         </div>
         {isOpen && (
           <div

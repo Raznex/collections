@@ -66,6 +66,7 @@
 
   &__name {
     @include text-style(500, 16px);
+    cursor: pointer;
   }
 
   &__like {
@@ -93,6 +94,7 @@
     width: 100%;
     color: $description-gray;
     gap: 15px;
+    pointer-events: none;
   }
 
   &__info {

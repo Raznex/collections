@@ -11,11 +11,12 @@ import EditingModel from './pages/EditingModel/EditingModel';
 import AddModel from './pages/AddModel/AddModel';
 import Profile from './pages/Profile/Profile';
 import Catalog from './pages/Catalog/Catalog';
+import PageNotFound from './components/PageNotFound/PageNotFound';
 
 const router = createBrowserRouter([
   {
     element: <App />,
-    // errorElement: <PagesNotFound />,
+    errorElement: <PageNotFound />,
     children: [
       {
         path: '/login',

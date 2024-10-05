@@ -15,6 +15,7 @@
     @include flex-center(column, space-between, $align-items: flex-start);
     max-width: 255px;
     margin-right: 85px;
+    gap: 25px;
   }
 
   &__title {
@@ -29,7 +30,6 @@
     border-radius: 5px;
     padding: 8px 10px;
     position: relative;
-    margin-bottom: 30px;
 
     &:focus-within {
       border-color: $orange;
@@ -54,6 +54,16 @@
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
+  }
+
+  &__addbutton {
+    @include text-style(600, 16px, 19px, $white, center);
+    @include button-style(
+      $padding: 15px,
+      $background-color: $orange,
+      $background-color-hover: $orange-hover
+    );
+    width: 100%;
   }
 
   &__right-block {

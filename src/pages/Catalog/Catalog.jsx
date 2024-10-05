@@ -1,24 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import './Catalog.scss';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import CardList from '../../components/CardList/CardList';
 import { getAllModels, getModelBySearch, getUserModels } from '../../utils/api';
+import { useStore } from '../../utils/store/store';
 
 const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const { isErrorPopupOpen, setErrorPopup } = useStore();
   const location = useLocation();
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (location.pathname === '/') {
       getAllModels().then((data) => {
-        setCards(data.user_data);
+        const updatedCards = data.user_data.map((card) => ({
+          ...card,
+          isLiked: data.favorite_models.includes(card.id),
+        }));
+        setCards(updatedCards);
         setIsLoading(false);
       });
     } else if (location.pathname === '/my-models') {
       getUserModels().then((data) => {
-        setCards(data.user_data);
+        setCards(data.user_models);
         setIsLoading(false);
       });
     }
@@ -35,9 +44,14 @@ const Catalog = () => {
   });
 
   const onSubmit = (data) => {
-    getModelBySearch(data).then(() => {
-      setCards(data.user_data);
-    });
+    getModelBySearch(data)
+      .then((data) => {
+        setCards(data.user_data);
+      })
+      .catch(() => {
+        console.log(1);
+        setErrorPopup(true);
+      });
   };
 
   return (
@@ -63,6 +77,14 @@ const Catalog = () => {
               <button type='submit' className='catalog__search-button'></button>
             </form>
             <p className='catalog__categories'>Категория</p>
+            <button
+              className='catalog__addbutton'
+              onClick={() => {
+                navigate('/addmodel');
+              }}
+            >
+              Добавить модель
+            </button>
           </div>
           <div className='catalog__right-block'>
             <div className='catalog__box'>

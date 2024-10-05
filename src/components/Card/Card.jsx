@@ -4,15 +4,21 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import productImage from '../../assets/icons/panda.jpg';
 import { addModelToFavourite } from '../../utils/api';
+import { useStore } from '../../utils/store/store';
 
 const Card = ({ card, view }) => {
   const navigate = useNavigate();
-  const [isLiked, setIsLiked] = useState(false);
-
+  const [isLiked, setIsLiked] = useState(card.isLiked);
+  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  console.log(card);
   const handleLikeClick = () => {
-    addModelToFavourite(card.id).then(() => {
-      setIsLiked(!isLiked);
-    });
+    addModelToFavourite(card.id)
+      .then(() => {
+        setIsLiked(!isLiked);
+      })
+      .catch(() => {
+        setErrorPopup(true);
+      });
   };
 
   return (
@@ -33,7 +39,12 @@ const Card = ({ card, view }) => {
       </div>
       <div className='card__description'>
         <div className='card__container'>
-          <h2 className='card__name'>{card.collectable_name}</h2>
+          <h2
+            className='card__name'
+            onClick={() => navigate(`/product/${card.id}`)}
+          >
+            {card.collectable_name}
+          </h2>
           <div
             className={`card__like ${isLiked ? 'card__like_active' : ''}`}
             onClick={handleLikeClick}

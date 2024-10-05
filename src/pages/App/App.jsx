@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import { getAllModels } from '../../utils/api';
+import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Header />
       <main className='app__main'>
         <Outlet />
+        <ErrorPopup />
       </main>
       <Footer />
     </div>

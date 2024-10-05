@@ -27,7 +27,6 @@ const Login = () => {
     <div className='login'>
       <h1 className='login__title'>Вход</h1>
       <form onSubmit={handleSubmit(onSubmit)} className='login__form'>
-        <CSRFToken />
         <div className='login__input-container'>
           <Controller
             name='email'

@@ -13,12 +13,12 @@ import {
   getDetailModel,
 } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useStore } from '../../utils/store/store';
 
 const EditForm = ({ location }) => {
   const [images, setImages] = useState([]);
   const [card, setCard] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [damage, setDamage] = useState('Не повреждена');
   const [currency, setCurrency] = useState('RUB');
   const [defaultValues, setDefaultValues] = useState({
@@ -46,19 +46,25 @@ const EditForm = ({ location }) => {
     }
   }, []);
 
+  const { isErrorPopupOpen, setErrorPopup } = useStore();
   const cardId = useParams().id;
   const navigate = useNavigate();
+
   useEffect(() => {
-    setIsLoading(true);
-    getDetailModel(cardId)
-      .then((data) => {
-        setCard(data);
-        setIsLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => setIsLoading(false));
+    if (cardId) {
+      setIsLoading(true);
+      getDetailModel(cardId)
+        .then((data) => {
+          setCard(data);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        })
+        .finally(() => setIsLoading(false));
+    } else {
+      setIsLoading(false);
+    }
   }, []);
 
   const page = window.location.pathname;
@@ -86,13 +92,23 @@ const EditForm = ({ location }) => {
   });
   const onSubmit = (data) => {
     if (location === '/editmodel') {
-      editModel({ damage, ...data }, cardId).then(() => {
-        navigate(`/product/${cardId}`);
-      });
+      console.log(1);
+      editModel({ damage, ...data }, cardId)
+        .then(() => {
+          navigate(`/product/${cardId}`);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
     } else {
-      addModel({ damage, ...data }, cardId).then((res) => {
-        navigate(`/product/${res.id}`);
-      });
+      console.log(2);
+      addModel({ damage, ...data })
+        .then((res) => {
+          navigate(`/product/${res.id}`);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
     }
   };
   return (

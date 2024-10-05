@@ -50,7 +50,6 @@ const Register = () => {
         onSubmit={hasCode ? handleSubmit(onSubmit) : handleSubmit(sendCode)}
         className='register__form'
       >
-        <CSRFToken />
         <div className='register__input-container'>
           <Controller
             name='email'
