@@ -11,6 +11,7 @@ import {
   addModelToFavourite,
   editModel,
   getDetailModel,
+  getDetailModelForEdit,
 } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../utils/store/store';
@@ -19,28 +20,34 @@ const EditForm = ({ location }) => {
   const [images, setImages] = useState([]);
   const [card, setCard] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [damage, setDamage] = useState('Не повреждена');
+  const [damage, setDamage] = useState('off');
   const [currency, setCurrency] = useState('RUB');
   const [defaultValues, setDefaultValues] = useState({
-    modelName: '',
-    manufacturer: '',
-    price: '',
-    modelCode: '',
-    category: '',
-    year: '',
-    location: '',
+    collectable_name: '',
+    Производитель: '',
+    article: '',
+    Категория: '',
+    Год: '',
+    scale: '',
+    Местонахождение: '',
+    quantity: '',
+    buy_price: '',
+    description: '',
   });
 
   useEffect(() => {
     if (location === '/editmodel') {
       setDefaultValues({
-        modelName: '1',
-        manufacturer: '2',
-        price: '3',
-        modelCode: '4',
-        category: '5',
-        year: '6',
-        location: '7',
+        collectable_name: '',
+        Производитель: '',
+        article: '',
+        Категория: '',
+        Год: '',
+        scale: '',
+        Местонахождение: '',
+        quantity: '',
+        buy_price: '',
+        description: '',
       });
       setDamage('damage');
     }
@@ -53,7 +60,7 @@ const EditForm = ({ location }) => {
   useEffect(() => {
     if (cardId) {
       setIsLoading(true);
-      getDetailModel(cardId)
+      getDetailModelForEdit(cardId)
         .then((data) => {
           setCard(data);
           setIsLoading(false);
@@ -92,8 +99,7 @@ const EditForm = ({ location }) => {
   });
   const onSubmit = (data) => {
     if (location === '/editmodel') {
-      console.log(1);
-      editModel({ damage, ...data }, cardId)
+      editModel({ damage, currency, ...data }, cardId)
         .then(() => {
           navigate(`/product/${cardId}`);
         })
@@ -102,7 +108,7 @@ const EditForm = ({ location }) => {
         });
     } else {
       console.log(2);
-      addModel({ damage, ...data })
+      addModel({ damage, currency, ...data })
         .then((res) => {
           navigate(`/product/${res.id}`);
         })
@@ -120,12 +126,12 @@ const EditForm = ({ location }) => {
           <div className='editForm__info'>
             <div className='editForm__inputs editForm__inputs_left1'>
               <div className='editForm__input'>
-                <label htmlFor='modelName' className='editForm__label'>
+                <label htmlFor='collectable_name' className='editForm__label'>
                   Название модели
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='modelName'
+                    name='collectable_name'
                     control={control}
                     rules={{
                       required: 'Поле обязательно для заполнения',
@@ -133,40 +139,37 @@ const EditForm = ({ location }) => {
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.modelName}
+                        error={!!errors.collectable_name}
                         placeholder={'Название модели'}
                       />
                     )}
                   />
-                  {errors.modelName && (
+                  {errors.collectable_name && (
                     <p className='editForm__error'>
-                      {errors.modelName.message}
+                      {errors.collectable_name.message}
                     </p>
                   )}
                 </div>
               </div>
               <div className='editForm__input'>
-                <label htmlFor='modelName' className='editForm__label'>
+                <label htmlFor='Производитель' className='editForm__label'>
                   Производитель
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='manufacturer'
+                    name='Производитель'
                     control={control}
-                    rules={{
-                      required: 'Поле обязательно для заполнения',
-                    }}
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.manufacturer}
+                        error={!!errors.Производитель}
                         placeholder={'Производитель'}
                       />
                     )}
                   />
-                  {errors.manufacturer && (
+                  {errors.Производитель && (
                     <p className='editForm__error'>
-                      {errors.manufacturer.message}
+                      {errors.Производитель.message}
                     </p>
                   )}
                 </div>
@@ -174,26 +177,25 @@ const EditForm = ({ location }) => {
             </div>
             <div className='editForm__inputs editForm__inputs_right1'>
               <div className='editForm__input'>
-                <label htmlFor='modelName' className='editForm__label'>
+                <label htmlFor='buy_price' className='editForm__label'>
                   Цена
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='price'
+                    name='buy_price'
                     control={control}
-                    rules={{
-                      required: 'Поле обязательно для заполнения',
-                    }}
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.modelName}
+                        error={!!errors.buy_price}
                         placeholder={'Цена'}
                       />
                     )}
                   />
-                  {errors.price && (
-                    <p className='editForm__error'>{errors.price.message}</p>
+                  {errors.buy_price && (
+                    <p className='editForm__error'>
+                      {errors.buy_price.message}
+                    </p>
                   )}
                   <div className='editForm__currency'>
                     <CurrencySelect
@@ -209,62 +211,77 @@ const EditForm = ({ location }) => {
           <div className='editForm__info'>
             <div className='editForm__inputs editForm__inputs_left2'>
               <div className='editForm__input'>
-                <label htmlFor='modelCode' className='editForm__label'>
+                <label htmlFor='article' className='editForm__label'>
                   Код модели
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='modelCode'
+                    name='article'
                     control={control}
-                    rules={{
-                      required: 'Поле обязательно для заполнения',
-                    }}
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.modelCode}
+                        error={!!errors.article}
                         placeholder={'Код модели'}
                       />
                     )}
                   />
-                  {errors.modelCode && (
+                  {errors.article && (
+                    <p className='editForm__error'>{errors.article.message}</p>
+                  )}
+                </div>
+              </div>
+              <div className='editForm__input'>
+                <label htmlFor='Категория' className='editForm__label'>
+                  Категория
+                </label>
+                <div className='editForm__input-container'>
+                  <Controller
+                    name='Категория'
+                    control={control}
+                    render={({ field }) => (
+                      <CreateInput
+                        {...field}
+                        error={!!errors.Категория}
+                        placeholder={'Категория'}
+                      />
+                    )}
+                  />
+                  {errors.Категория && (
                     <p className='editForm__error'>
-                      {errors.modelCode.message}
+                      {errors.Категория.message}
                     </p>
                   )}
                 </div>
               </div>
               <div className='editForm__input'>
-                <label htmlFor='category' className='editForm__label'>
-                  Категория
-                </label>
-                <div className='editForm__input-container'>
-                  <Controller
-                    name='category'
-                    control={control}
-                    rules={{
-                      required: 'Поле обязательно для заполнения',
-                    }}
-                    render={({ field }) => (
-                      <CreateInput
-                        {...field}
-                        error={!!errors.manufacturer}
-                        placeholder={'Категория'}
-                      />
-                    )}
-                  />
-                  {errors.category && (
-                    <p className='editForm__error'>{errors.category.message}</p>
-                  )}
-                </div>
-              </div>
-              <div className='editForm__input'>
-                <label htmlFor='modelName' className='editForm__label'>
+                <label htmlFor='Год' className='editForm__label'>
                   Год выпуска
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='year'
+                    name='Год'
+                    control={control}
+                    render={({ field }) => (
+                      <CreateInput
+                        {...field}
+                        error={!!errors.Год}
+                        placeholder={'Год выпуска'}
+                      />
+                    )}
+                  />
+                  {errors.Год && (
+                    <p className='editForm__error'>{errors.Год.message}</p>
+                  )}
+                </div>
+              </div>
+              <div className='editForm__input'>
+                <label htmlFor='Местонахождение' className='editForm__label'>
+                  Масштаб
+                </label>
+                <div className='editForm__input-container'>
+                  <Controller
+                    name='scale'
                     control={control}
                     rules={{
                       required: 'Поле обязательно для заполнения',
@@ -272,40 +289,63 @@ const EditForm = ({ location }) => {
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.year}
-                        placeholder={'Год выпуска'}
+                        error={!!errors.scale}
+                        placeholder={'Масштаб'}
                       />
                     )}
                   />
-                  {errors.year && (
-                    <p className='editForm__error'>{errors.year.message}</p>
+                  {errors.scale && (
+                    <p className='editForm__error'>{errors.scale.message}</p>
+                  )}
+                </div>
+              </div>
+              <div className='editForm__input'>
+                <label htmlFor='quantity' className='editForm__label'>
+                  Колличество
+                </label>
+                <div className='editForm__input-container'>
+                  <Controller
+                    name='quantity'
+                    control={control}
+                    rules={{
+                      required: 'Поле обязательно для заполнения',
+                    }}
+                    render={({ field }) => (
+                      <CreateInput
+                        {...field}
+                        error={!!errors.quantity}
+                        placeholder={'Количество'}
+                      />
+                    )}
+                  />
+                  {errors.quantity && (
+                    <p className='editForm__error'>{errors.quantity.message}</p>
                   )}
                 </div>
               </div>
             </div>
             <div className='editForm__inputs editForm__inputs_right2'>
               <div className='editForm__input'>
-                <label htmlFor='location' className='editForm__label'>
+                <label htmlFor='Местонахождение' className='editForm__label'>
                   Место нахождения
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
-                    name='location'
+                    name='Местонахождение'
                     control={control}
-                    rules={{
-                      required: 'Поле обязательно для заполнения',
-                    }}
                     render={({ field }) => (
                       <CreateInput
                         {...field}
-                        error={!!errors.location}
+                        error={!!errors.Местонахождение}
                         location={'location'}
                         placeholder={'Место нахождения'}
                       />
                     )}
                   />
-                  {errors.location && (
-                    <p className='editForm__error'>{errors.location.message}</p>
+                  {errors.Местонахождение && (
+                    <p className='editForm__error'>
+                      {errors.Местонахождение.message}
+                    </p>
                   )}
                 </div>
               </div>
@@ -315,31 +355,31 @@ const EditForm = ({ location }) => {
                   <div className='editForm__radio-btn'>
                     <label htmlFor='radio-1' className='editForm__radio-label'>
                       <div
-                        className={`editForm__circle ${damage === 'Повреждена' ? 'editForm__circle_active' : ''}`}
-                      ></div>
-                      Повреждена
-                    </label>
-                    <input
-                      type='radio'
-                      id='radio-1'
-                      value='Повреждена'
-                      checked={damage === 'Повреждена'}
-                      onChange={() => setDamage('Повреждена')}
-                    />
-                  </div>
-                  <div className='editForm__radio-btn'>
-                    <label htmlFor='radio-2' className='editForm__radio-label'>
-                      <div
-                        className={`editForm__circle ${damage === 'Не повреждена' ? 'editForm__circle_active' : ''}`}
+                        className={`editForm__circle ${damage === 'off' ? 'editForm__circle_active' : ''}`}
                       ></div>
                       Не повреждена
                     </label>
                     <input
                       type='radio'
+                      id='radio-1'
+                      value='Повреждена'
+                      checked={damage === 'off'}
+                      onChange={() => setDamage('off')}
+                    />
+                  </div>
+                  <div className='editForm__radio-btn'>
+                    <label htmlFor='radio-2' className='editForm__radio-label'>
+                      <div
+                        className={`editForm__circle ${damage === 'on' ? 'editForm__circle_active' : ''}`}
+                      ></div>
+                      Повреждена
+                    </label>
+                    <input
+                      type='radio'
                       id='radio-2'
-                      value='Не повреждена'
-                      checked={damage === 'Не повреждена'}
-                      onChange={() => setDamage('Не повреждена')}
+                      value='on'
+                      checked={damage === 'on'}
+                      onChange={() => setDamage('on')}
                     />
                   </div>
                 </div>

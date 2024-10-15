@@ -67,6 +67,24 @@
     }
   }
 
+  &__burger-menu {
+    background-color: $dark-charcoal;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    width: 250px;
+    max-height: 0;
+    z-index: 100;
+    list-style: none;
+    gap: 25px;
+    transition: max-height 0.3s ease-in;
+    overflow: hidden;
+
+    &_active {
+      max-height: 260px;
+    }
+  }
+
   &__avatar {
     @include flex-center();
     flex-shrink: 0;
@@ -84,6 +102,10 @@
       object-fit: cover;
       display: flex;
     }
+    &:hover .header__burger-menu {
+      cursor: pointer;
+      max-height: 260px;
+    }
   }
 
   &__account-settings {
@@ -93,24 +115,9 @@
 
 .menu {
   @include flex-center(column, center, flex-start);
-  background-color: $dark-charcoal;
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 250px;
-  max-height: 0;
-  padding: 0 25px;
   list-style: none;
   gap: 25px;
-  transition:
-    max-height 0.3s ease-in,
-    padding 0.3s ease-in;
-  overflow: hidden;
-
-  &_active {
-    max-height: 260px;
-    padding: 25px;
-  }
+  padding: 25px;
 
   &__list {
     @include text-style($font-weight: 500, $text-align: left, $color: $white);

@@ -10,7 +10,6 @@ const Card = ({ card, view }) => {
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(card.isLiked);
   const { isErrorPopupOpen, setErrorPopup } = useStore();
-  console.log(card);
   const handleLikeClick = () => {
     addModelToFavourite(card.id)
       .then(() => {
@@ -24,11 +23,11 @@ const Card = ({ card, view }) => {
   return (
     <div className={`card card--${view}`}>
       <div className='card__img-container'>
-        <input
-          type='checkbox'
-          id={`select-card-${card.id}`}
-          className='card__select-checkbox'
-        />
+        {/*<input*/}
+        {/*  type='checkbox'*/}
+        {/*  id={`select-card-${card.id}`}*/}
+        {/*  className='card__select-checkbox'*/}
+        {/*/>*/}
         <label htmlFor={`select-card-${card.id}`}></label>
         <img
           src={productImage}

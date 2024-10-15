@@ -1,8 +1,9 @@
 import './Footer.scss';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
+import { useStore } from '../../utils/store/store';
 
 const Footer = () => {
-  const userAuthorized = false;
+  const { isAuthenticated } = useStore();
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -20,7 +21,7 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-          {userAuthorized ? (
+          {isAuthenticated ? (
             <>
               <ul className='footer__list'>
                 <li className='footer__link'>Мои модели</li>

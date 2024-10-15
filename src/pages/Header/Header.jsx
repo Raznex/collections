@@ -3,10 +3,10 @@ import './Header.scss';
 import { Link } from 'react-router-dom';
 import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
+import { useStore } from '../../utils/store/store';
 const Header = () => {
-  const userAuthorized = false;
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const { isAuthenticated } = useStore();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -21,7 +21,6 @@ const Header = () => {
     }
   };
 
-  // Добавляем и удаляем обработчик кликов
   useEffect(() => {
     if (anchorEl) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -29,7 +28,6 @@ const Header = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     }
 
-    // Чистим обработчик при размонтировании компонента
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -53,9 +51,9 @@ const Header = () => {
         </nav>
         <div className='header__account'>
           <LanguageButtons />
-          {userAuthorized ? (
+          {isAuthenticated ? (
             <div className='header__account-settings'>
-              <button
+              <div
                 className='header__avatar'
                 aria-controls='simple-menu'
                 aria-haspopup='true'
@@ -66,28 +64,31 @@ const Header = () => {
                   alt='Аватар'
                   className='header__avatar-image'
                 />
-              </button>
-              <ul className={`menu ${anchorEl ? 'menu_active' : ''}`}>
-                <li className='menu__list' onClick={handleClose}>
-                  Добавить модель
-                </li>
-                <li className='menu__list' onClick={handleClose}>
-                  Избранное
-                </li>
-                <li className='menu__list' onClick={handleClose}>
-                  Настройки
-                </li>
-                <li className='menu__line'></li>
-                <li className='menu__list menu__list_acc' onClick={handleClose}>
-                  Аккаунт
-                </li>
-                <li
-                  className='menu__list menu__list_logout'
-                  onClick={handleClose}
-                >
-                  Выйти из аккаунта
-                </li>
-              </ul>
+
+                <div className='header__burger-menu'>
+                  <ul className='menu'>
+                    <li className='menu__list'>
+                      <a href='/addmodel' className='menu__list'>
+                        Добавить модель
+                      </a>
+                    </li>
+                    <li className='menu__list'>
+                      <a href='/' className='menu__list'>
+                        Избранное
+                      </a>
+                    </li>
+                    <li className='menu__line'></li>
+                    <li className='menu__list menu__list_acc'>
+                      <a href='/profile' className='menu__list'>
+                        Аккаунт
+                      </a>
+                    </li>
+                    <li className='menu__list menu__list_logout'>
+                      Выйти из аккаунта
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           ) : (
             <>

@@ -101,7 +101,7 @@ const Product = () => {
                         ></button>
                         <button
                           className={`product__tool product__pencil ${isLiked ? 'product__pencil_active' : ''}`}
-                          onClick={() => navigate(`/editmodel/${card.id}`)}
+                          onClick={() => navigate(`/editmodel/${cardId}`)}
                         ></button>
                         <button
                           className={`product__tool product__like ${isLiked ? 'product__like_active' : ''}`}
@@ -117,7 +117,7 @@ const Product = () => {
                       </p>
                     </div>
                   </div>
-                  <Auction />
+                  <Auction cardId={cardId} />
                 </div>
               </div>
               <div className='product__description'>

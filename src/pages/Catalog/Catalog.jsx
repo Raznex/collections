@@ -3,7 +3,12 @@ import './Catalog.scss';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import CardList from '../../components/CardList/CardList';
-import { getAllModels, getModelBySearch, getUserModels } from '../../utils/api';
+import {
+  checkAuth,
+  getAllModels,
+  getModelBySearch,
+  getUserModels,
+} from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 
 const Catalog = () => {
@@ -11,11 +16,21 @@ const Catalog = () => {
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  const {
+    isErrorPopupOpen,
+    setErrorPopup,
+    isAuthenticated,
+    setIsAuthenticated,
+  } = useStore();
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+    checkAuth()
+      .then(() => {
+        setIsAuthenticated(true);
+      })
+      .catch(() => setIsAuthenticated(false));
     if (location.pathname === '/') {
       getAllModels().then((data) => {
         const updatedCards = data.user_data.map((card) => ({
@@ -46,10 +61,10 @@ const Catalog = () => {
   const onSubmit = (data) => {
     getModelBySearch(data)
       .then((data) => {
-        setCards(data.user_data);
+        console.log(data);
+        // setCards(data.user_data);
       })
       .catch(() => {
-        console.log(1);
         setErrorPopup(true);
       });
   };

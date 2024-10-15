@@ -1,9 +1,14 @@
 import React from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import InputLogin from '../InputLogin/InputLogin';
+import { useForm } from 'react-hook-form';
 import './Auction.scss';
+import { useNavigate } from 'react-router-dom';
+import { takePriceAuction } from '../../utils/api';
+import { useStore } from '../../utils/store/store';
 
-const Auction = () => {
+const Auction = ({ cardId }) => {
+  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -12,10 +17,18 @@ const Auction = () => {
     control,
   } = useForm({
     defaultValues: {
-      myPrice: '',
+      price: '',
     },
   });
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    takePriceAuction(data, cardId)
+      .then(() => {
+        navigate(`/product/${cardId}`);
+      })
+      .catch(() => {
+        setErrorPopup(true);
+      });
+  };
 
   return (
     <div className='auction'>
@@ -32,7 +45,7 @@ const Auction = () => {
           <input
             placeholder={'Например 10000'}
             className='auction__input'
-            {...register('myPrice', { required: true })}
+            {...register('price', { required: true })}
           />
           <button className='auction__sumbit'>Моя цена</button>
         </form>
