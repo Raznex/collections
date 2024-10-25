@@ -67,7 +67,7 @@ const Register = () => {
                 {...field}
                 type={'text'}
                 error={!!errors.email}
-                placeholder={'Email/Никнейм'}
+                placeholder={'Email'}
               />
             )}
           />
