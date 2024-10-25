@@ -8,7 +8,7 @@ export async function register(body) {
     const formData = new FormData();
     formData.append('email', body.email);
     formData.append('password', body.password);
-    formData.append('confirm_password', body.controllPassword);
+    formData.append('confirm_password', body.confirm_password);
     formData.append('code', body.code || '');
     formData.append('csrfmiddlewaretoken', csrftoken);
 

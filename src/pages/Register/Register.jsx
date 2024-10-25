@@ -30,6 +30,7 @@ const Register = () => {
 
   const onSubmit = (data) => {
     if (data.password === data.confirm_password) {
+      console.log(data);
       register(data)
         .then((res) => {
           navigate('/login');
