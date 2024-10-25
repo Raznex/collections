@@ -26,11 +26,6 @@ const Catalog = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    checkAuth()
-      .then(() => {
-        setIsAuthenticated(true);
-      })
-      .catch(() => setIsAuthenticated(false));
     if (location.pathname === '/') {
       getAllModels().then((data) => {
         const updatedCards = data.user_data.map((card) => ({

@@ -11,7 +11,7 @@ const RedirectUnAuth = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return isAuthenticated ? (
+  return !isAuthenticated ? (
     <Outlet />
   ) : (
     <Navigate to='/login' replace state={{ from: location }} />

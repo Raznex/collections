@@ -8,23 +8,19 @@ import { useStore } from '../../utils/store/store';
 import { checkAuth } from '../../utils/api';
 
 const App = () => {
-  const { loading, setLoading, setIsAuthenticated } = useStore();
+  const { loading, setLoading, setIsAuthenticated, isAuthenticated } =
+    useStore();
 
   useEffect(() => {
     setLoading(true);
-    const verifyAuth = async () => {
-      try {
-        await checkAuth();
-        setIsAuthenticated(true);
-      } catch {
-        setIsAuthenticated(false);
-      } finally {
-        setLoading(false);
-      }
-    };
-    verifyAuth();
+    checkAuth()
+      .then((res) => {
+        setIsAuthenticated(res.status);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
+  console.log(isAuthenticated);
   return (
     <>
       <div className='app'>
