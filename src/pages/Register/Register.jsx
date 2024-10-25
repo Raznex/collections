@@ -5,6 +5,7 @@ import './Register.scss';
 import { register, sendVerificationCode } from '../../utils/autorize';
 import CSRFToken from '../../utils/csrfToken/csrfToken';
 import { useNavigate } from 'react-router-dom';
+import { useStore } from '../../utils/store/store';
 
 const Register = () => {
   const [hasCode, setHasCode] = useState(false);
@@ -23,14 +24,17 @@ const Register = () => {
       code: '',
     },
   });
+  const { setErrorPopup } = useStore();
   const password = watch('password');
   const confirm_password = watch('confirm_password');
 
   const onSubmit = (data) => {
     if (data.password === data.confirm_password) {
-      register(data).then((res) => {
-        navigate('/login');
-      });
+      register(data)
+        .then((res) => {
+          navigate('/login');
+        })
+        .catch(() => setErrorPopup(true));
     } else {
       errors.confirm_password = 'Пароли не совпадают';
     }

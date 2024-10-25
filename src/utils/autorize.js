@@ -17,7 +17,11 @@ export async function register(body) {
     });
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
   }
 }
 
@@ -32,7 +36,26 @@ export async function login(body) {
     });
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
+  }
+}
+
+export async function logout(body) {
+  try {
+    const res = await axios.get(`${baseURL}/logout/`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
   }
 }
 

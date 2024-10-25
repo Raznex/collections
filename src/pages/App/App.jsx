@@ -6,10 +6,10 @@ import Footer from '../Footer/Footer';
 import ErrorPopup from '../../components/ErrorPopup/ErrorPopup';
 import { useStore } from '../../utils/store/store';
 import { checkAuth } from '../../utils/api';
+import RegisterPopup from '../../components/RegisterPopup/RegisterPopup';
 
 const App = () => {
-  const { loading, setLoading, setIsAuthenticated, isAuthenticated } =
-    useStore();
+  const { loading, setLoading, setIsAuthenticated } = useStore();
 
   useEffect(() => {
     setLoading(true);
@@ -20,7 +20,6 @@ const App = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  console.log(isAuthenticated);
   return (
     <>
       <div className='app'>

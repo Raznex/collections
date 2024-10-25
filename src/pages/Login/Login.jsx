@@ -5,6 +5,8 @@ import './Login.scss';
 import { login } from '../../utils/autorize';
 import { useNavigate } from 'react-router-dom';
 import CSRFToken from '../../utils/csrfToken/csrfToken';
+import { useStore } from '../../utils/store/store';
+import { checkAuth } from '../../utils/api';
 const Login = () => {
   const {
     handleSubmit,
@@ -17,11 +19,17 @@ const Login = () => {
       password: '',
     },
   });
+  const { setErrorPopup, setIsAuthenticated } = useStore();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    login(data).then(() => {
-      navigate('/');
-    });
+    login(data)
+      .then(() => {
+        checkAuth().then((res) => {
+          setIsAuthenticated(res.status);
+        });
+        navigate('/');
+      })
+      .catch(() => setErrorPopup(true));
   };
   return (
     <div className='login'>

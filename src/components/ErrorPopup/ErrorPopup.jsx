@@ -5,11 +5,17 @@ import errorIcon from '../../assets/icons/ErrorIcon.svg';
 import closeIcon from '../../assets/icons/closeIcon.svg';
 
 const ErrorPopup = () => {
-  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  const {
+    isErrorPopupOpen,
+    setErrorPopup,
+    isRegisterPopupOpen,
+    setRegisterPopup,
+  } = useStore();
   const popupRef = useRef(null);
 
   const closePopup = () => {
     setErrorPopup(false);
+    setRegisterPopup(false);
   };
 
   const handleClickOutside = (event) => {
@@ -19,7 +25,7 @@ const ErrorPopup = () => {
   };
 
   useEffect(() => {
-    if (isErrorPopupOpen) {
+    if (isErrorPopupOpen || isRegisterPopupOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     } else {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -28,9 +34,9 @@ const ErrorPopup = () => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isErrorPopupOpen]);
+  }, [isErrorPopupOpen, isRegisterPopupOpen]);
 
-  if (!isErrorPopupOpen) return null;
+  if (!isErrorPopupOpen && !isRegisterPopupOpen) return null;
 
   return (
     <div className='errorpopup'>
@@ -38,8 +44,31 @@ const ErrorPopup = () => {
         <button className='errorpopup__close-button' onClick={closePopup}>
           <img src={closeIcon} alt='Close' className='errorpopup__close-icon' />
         </button>
-        <img src={errorIcon} alt='Error' className='errorpopup__img' />
-        <p className='errorpopup__text'>Произошла ошибка. Попробуйте снова.</p>
+        {isErrorPopupOpen ? (
+          <img src={errorIcon} alt='Error' className='errorpopup__img' />
+        ) : (
+          ''
+        )}
+        <p className='errorpopup__text'>
+          {isErrorPopupOpen
+            ? 'Произошла ошибка. Попробуйте снова.'
+            : 'Для выполнения данного действия необходимо авторизоваться'}
+        </p>
+        {isRegisterPopupOpen ? (
+          <div className='errorpopup__register'>
+            <a
+              href='/login'
+              className='errorpopup__link errorpopup__link_login'
+            >
+              Войти
+            </a>
+            <a href='/register' className='errorpopup__link'>
+              Регистрация
+            </a>
+          </div>
+        ) : (
+          ''
+        )}
       </div>
     </div>
   );

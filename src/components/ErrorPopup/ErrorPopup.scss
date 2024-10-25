@@ -44,7 +44,36 @@
   }
 
   &__text {
-    @include text-style($font-size: 18px);
+    @include text-style($font-size: 19px, $line-height: 24px);
     margin: 30px 0 0;
+    max-width: 350px;
+  }
+
+  &__register {
+    @include flex-center(row);
+    margin: 30px;
+    gap: 25px;
+  }
+
+  &__link {
+    @include button-style(
+        $border-radius: 5px,
+        $padding: 10px,
+        $background-color: $button-gray,
+        $background-color-hover: $button-gray-hover,
+        $color: white
+    );
+    @include text-style($color: $white, $font-size: 16px,);
+    width: 150px;
+
+    &_login {
+      @include button-style(
+          $border-radius: 5px,
+          $padding: 10px,
+          $background-color: $orange,
+          $background-color-hover: $orange-hover,
+          $color: white
+      );
+    }
   }
 }

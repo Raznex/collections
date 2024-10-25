@@ -51,7 +51,7 @@ export async function getUserModels() {
 
 export async function getDetailModel(elemId) {
   try {
-    const res = await axios.get(`${baseURL}/model_details_json/${elemId}`, {
+    const res = await axios.get(`${baseURL}/model_details_json/${elemId}/`, {
       withCredentials: true,
     });
     return res.data;
@@ -85,7 +85,7 @@ export async function getDetailModelForEdit(elemId) {
 export async function addModelToFavourite(elemId) {
   try {
     const res = await axios.post(
-      `${baseURL}/model_details_json/${elemId}/toggle_favorite`,
+      `${baseURL}/model_details_json/${elemId}/toggle_favorite/`,
       {
         withCredentials: true,
       }
@@ -130,7 +130,7 @@ export async function editModel(body, elemId) {
     formData.append('damage', body.damage);
     formData.append('csrfmiddlewaretoken', csrftoken);
     const res = await axios.post(
-      `${baseURL}/edit_model_json/${elemId}`,
+      `${baseURL}/edit_model_json/${elemId}/`,
       formData,
       {
         withCredentials: true,
@@ -181,7 +181,7 @@ export async function takePriceAuction(body, elemId) {
     formData.append('price', body.price);
 
     const res = await axios.post(
-      `${baseURL}/model_details_json/${elemId}`,
+      `${baseURL}/model_details_json/${elemId}/`,
       formData,
       {
         withCredentials: true,

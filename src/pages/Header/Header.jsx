@@ -1,18 +1,31 @@
 import React, { useEffect } from 'react';
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 import { useStore } from '../../utils/store/store';
+import { logout } from '../../utils/autorize';
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { isAuthenticated } = useStore();
+  const { isAuthenticated, setErrorPopup, setIsAuthenticated } = useStore();
+  const navigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logoutRedirect = () => {
+    logout()
+      .then(() => {
+        setIsAuthenticated(false);
+        navigate('/');
+      })
+      .catch(() => {
+        setErrorPopup(true);
+      });
   };
 
   const handleClickOutside = (event) => {
@@ -83,7 +96,10 @@ const Header = () => {
                         Аккаунт
                       </a>
                     </li>
-                    <li className='menu__list menu__list_logout'>
+                    <li
+                      className='menu__list menu__list_logout'
+                      onClick={() => logoutRedirect()}
+                    >
                       Выйти из аккаунта
                     </li>
                   </ul>

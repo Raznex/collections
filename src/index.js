@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         element: <Catalog />,
       },
       {
+        path: 'product/:id',
+        element: <Product />,
+      },
+      {
         element: <RedirectUnAuth />,
         children: [
           {
@@ -42,10 +46,6 @@ const router = createBrowserRouter([
       {
         element: <RedirectAuth />,
         children: [
-          {
-            path: 'product/:id',
-            element: <Product />,
-          },
           {
             path: 'editmodel/:id',
             element: <EditingModel />,
@@ -73,7 +73,5 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );

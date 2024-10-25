@@ -4,6 +4,7 @@ import './Product.scss';
 import Carousel from '../../components/Carousel/Carousel';
 import { addModelToFavourite, getDetailModel } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useStore } from '../../utils/store/store';
 
 const Product = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -12,6 +13,7 @@ const Product = () => {
   const [error, setError] = useState(null);
   const cardId = useParams().id;
   const navigate = useNavigate();
+  const { isAuthenticated, setErrorPopup, setRegisterPopup } = useStore();
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,9 +29,31 @@ const Product = () => {
   }, []);
 
   const handleLikeClick = () => {
-    addModelToFavourite(card.id).then(() => {
-      setIsLiked(!isLiked);
-    });
+    if (isAuthenticated) {
+      addModelToFavourite(cardId)
+        .then(() => {
+          setIsLiked(!isLiked);
+        })
+        .catch(() => setErrorPopup(true));
+    } else {
+      setRegisterPopup(true);
+    }
+  };
+
+  const handleEditClick = () => {
+    if (isAuthenticated) {
+      navigate(`/editmodel/${cardId}`);
+    } else {
+      setRegisterPopup(true);
+    }
+  };
+
+  const handleArchiveClick = () => {
+    if (isAuthenticated) {
+      navigate(`/editmodel/${cardId}`);
+    } else {
+      setRegisterPopup(true);
+    }
   };
 
   return (
@@ -98,14 +122,17 @@ const Product = () => {
                       <div className='product__tools'>
                         <button
                           className={`product__tool product__archive ${isLiked ? 'product__archive_active' : ''}`}
+                          onClick={() => handleArchiveClick()}
                         ></button>
                         <button
                           className={`product__tool product__pencil ${isLiked ? 'product__pencil_active' : ''}`}
-                          onClick={() => navigate(`/editmodel/${cardId}`)}
+                          onClick={() => handleEditClick()}
                         ></button>
                         <button
                           className={`product__tool product__like ${isLiked ? 'product__like_active' : ''}`}
-                          onClick={handleLikeClick}
+                          onClick={() => {
+                            handleLikeClick();
+                          }}
                         ></button>
                       </div>
                       <p className='product__price'>
