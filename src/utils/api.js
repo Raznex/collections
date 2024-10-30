@@ -2,7 +2,7 @@ import axios from 'axios';
 import { csrftoken } from './csrfToken/csrfToken';
 
 // export const baseURL = 'http://dev.cars.nsspro.ru';
-export const baseURL = 'http://localhost:8000';
+export const baseURL = 'http://localhost:8000/api';
 
 export async function getAllModels() {
   try {
