@@ -1,35 +1,23 @@
 import './Carousel.scss';
-
 import React from 'react';
 import ImageGallery from 'react-image-gallery';
+import nophoto from '../../assets/icons/nophoto.png';
 
-const Carousel = () => {
-  const images = [
-    {
-      original:
-        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQVyTIfHoyc12eWXAJQ-B96BL5IuG0dM57NgEuVgwL2lD-Mb868',
-      thumbnail:
-        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQVyTIfHoyc12eWXAJQ-B96BL5IuG0dM57NgEuVgwL2lD-Mb868',
-    },
-    {
-      original:
-        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQVyTIfHoyc12eWXAJQ-B96BL5IuG0dM57NgEuVgwL2lD-Mb868',
-      thumbnail:
-        'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQVyTIfHoyc12eWXAJQ-B96BL5IuG0dM57NgEuVgwL2lD-Mb868',
-    },
-    {
-      original:
-        'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/008.png',
-      thumbnail:
-        'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/detail/008.png',
-    },
-    {
-      original:
-        'https://unite.pokemon.com/images/pokemon/pikachu/stat/stat-pikachu.png',
-      thumbnail:
-        'https://unite.pokemon.com/images/pokemon/pikachu/stat/stat-pikachu.png',
-    },
-  ];
+const Carousel = ({ card }) => {
+  let images;
+  if (card.photos.length) {
+    images = [
+      {
+        original: nophoto,
+        thumbnail: nophoto,
+      },
+    ];
+  } else {
+    images = card.photos.map((photo) => ({
+      original: photo,
+      thumbnail: photo,
+    }));
+  }
 
   return (
     <div>

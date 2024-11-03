@@ -83,6 +83,10 @@ export async function sendVerificationCode(body) {
 
     return res.data;
   } catch (err) {
-    console.log(err);
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
   }
 }

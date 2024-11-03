@@ -72,7 +72,7 @@ const Product = () => {
               <p className='product__error'>{error}</p>
               <div className='product__container'>
                 <div className='product__slider'>
-                  <Carousel />
+                  <Carousel card={card} />
                 </div>
                 <div className='product__right'>
                   <div className='product__right_up'>
@@ -120,14 +120,20 @@ const Product = () => {
                     </div>
                     <div className='product__editing'>
                       <div className='product__tools'>
-                        <button
-                          className={`product__tool product__archive ${isLiked ? 'product__archive_active' : ''}`}
-                          onClick={() => handleArchiveClick()}
-                        ></button>
-                        <button
-                          className={`product__tool product__pencil ${isLiked ? 'product__pencil_active' : ''}`}
-                          onClick={() => handleEditClick()}
-                        ></button>
+                        {card.is_owner ? (
+                          <>
+                            <button
+                              className={`product__tool product__archive ${isLiked ? 'product__archive_active' : ''}`}
+                              onClick={() => handleArchiveClick()}
+                            ></button>
+                            <button
+                              className={`product__tool product__pencil ${isLiked ? 'product__pencil_active' : ''}`}
+                              onClick={() => handleEditClick()}
+                            ></button>
+                          </>
+                        ) : (
+                          ''
+                        )}
                         <button
                           className={`product__tool product__like ${isLiked ? 'product__like_active' : ''}`}
                           onClick={() => {

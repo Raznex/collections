@@ -35,24 +35,6 @@ const EditForm = ({ location }) => {
     description: '',
   });
 
-  useEffect(() => {
-    if (location === '/editmodel') {
-      setDefaultValues({
-        collectable_name: '',
-        Производитель: '',
-        article: '',
-        Категория: '',
-        Год: '',
-        scale: '',
-        Местонахождение: '',
-        quantity: '',
-        buy_price: '',
-        description: '',
-      });
-      setDamage('damage');
-    }
-  }, []);
-
   const { isErrorPopupOpen, setErrorPopup } = useStore();
   const cardId = useParams().id;
   const navigate = useNavigate();
@@ -62,7 +44,23 @@ const EditForm = ({ location }) => {
       setIsLoading(true);
       getDetailModelForEdit(cardId)
         .then((data) => {
+          const newDefaultValues = {
+            collectable_name: data.form_data.collectable_name,
+            Производитель: 'data.form_data.Производитель',
+            article: data.form_data.article,
+            Категория: 'data.form_data.Категория',
+            Год: 'data.form_data.Год',
+            scale: data.form_data.scale,
+            Местонахождение: 'data.form_data.Местонахождение',
+            quantity: data.form_data.quantity,
+            buy_price: data.form_data.buy_price,
+            description: data.form_data.description,
+          };
+          setDefaultValues(newDefaultValues);
+          reset(newDefaultValues);
+          setCurrency(data.form_data.buy_price_currency);
           setCard(data);
+          data.form_data.is_damaged ? setDamage('off') : setDamage('on');
           setIsLoading(false);
         })
         .catch(() => {
@@ -72,7 +70,7 @@ const EditForm = ({ location }) => {
     } else {
       setIsLoading(false);
     }
-  }, []);
+  }, [cardId]);
 
   const page = window.location.pathname;
   const handleImageChange = (e) => {
@@ -94,9 +92,11 @@ const EditForm = ({ location }) => {
     handleSubmit,
     formState: { errors },
     control,
+    reset,
   } = useForm({
     defaultValues,
   });
+
   const onSubmit = (data) => {
     if (location === '/editmodel') {
       editModel({ damage, currency, ...data }, cardId)
@@ -107,7 +107,6 @@ const EditForm = ({ location }) => {
           setErrorPopup(true);
         });
     } else {
-      console.log(2);
       addModel({ damage, currency, ...data })
         .then((res) => {
           navigate(`/product/${res.id}`);

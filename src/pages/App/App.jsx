@@ -17,6 +17,9 @@ const App = () => {
       .then((res) => {
         setIsAuthenticated(res.status);
       })
+      .catch(() => {
+        setIsAuthenticated(false);
+      })
       .finally(() => setLoading(false));
   }, []);
 

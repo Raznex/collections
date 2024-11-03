@@ -15,26 +15,24 @@ const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
-  const {
-    isErrorPopupOpen,
-    setErrorPopup,
-    isAuthenticated,
-    setIsAuthenticated,
-  } = useStore();
+  const { setErrorPopup } = useStore();
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname === '/') {
-      getAllModels().then((data) => {
-        const updatedCards = data.user_data.map((card) => ({
-          ...card,
-          isLiked: data.favorite_models.includes(card.id),
-        }));
-        setCards(updatedCards);
-        setIsLoading(false);
-      });
+      getAllModels()
+        .then((data) => {
+          const updatedCards = data.user_data.map((card) => ({
+            ...card,
+            isLiked: data.favorite_models.includes(card.id),
+          }));
+          setCards(updatedCards);
+          setIsLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
     } else if (location.pathname === '/my-models') {
       getUserModels().then((data) => {
         setCards(data.user_models);
