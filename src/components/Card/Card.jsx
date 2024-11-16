@@ -7,7 +7,7 @@ import { addModelToFavourite } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 import nophoto from '../../assets/icons/nophoto.png';
 
-const Card = ({ card, view }) => {
+const Card = ({ card, view, tab }) => {
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(card.isLiked);
   const [image, setImage] = useState(card.thumbnail);
@@ -23,7 +23,7 @@ const Card = ({ card, view }) => {
   };
 
   useEffect(() => {
-    if (location.pathname === '/my-models') {
+    if (location.pathname === '/my-models' && tab === 'all') {
       setIsLiked(card.favorite);
     }
     if (card.thumbnail) {

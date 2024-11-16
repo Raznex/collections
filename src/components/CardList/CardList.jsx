@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './CardList.scss';
 import { useLocation } from 'react-router-dom';
-import { getAllModels, getUserModels } from '../../utils/api';
+import {
+  getAllModels,
+  getUserArchivedModels,
+  getUserFavouriteModels,
+  getUserModels,
+} from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 import Card from './../Card/Card';
 import Pagination from './../Pagination/Pagination';
@@ -29,11 +34,33 @@ const CardList = ({ view, tab }) => {
         .catch(() => {
           setErrorPopup(true);
         });
-    } else if (location.pathname === '/my-models') {
+    } else if (location.pathname === '/my-models' && tab === 'all') {
       getUserModels(currentPage, maxCards).then((data) => {
         setCards(data.user_models);
         setLoading(false);
       });
+    } else if (location.pathname === '/my-models' && tab === 'favorites') {
+      getUserFavouriteModels(currentPage, maxCards)
+        .then((data) => {
+          const updatedCards = data.favorite_models.map((card) => ({
+            ...card,
+            isLiked: true,
+          }));
+          setCards(updatedCards);
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    } else if (location.pathname === '/my-models' && tab === 'archive') {
+      getUserArchivedModels(currentPage, maxCards)
+        .then((data) => {
+          setCards(data.archived_models);
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
     } else if (location.pathname === '/') {
       getAllModels(1, 20)
         .then((data) => {
@@ -44,7 +71,7 @@ const CardList = ({ view, tab }) => {
           setErrorPopup(true);
         });
     }
-  }, [currentPage, maxCards]);
+  }, [currentPage, maxCards, tab]);
 
   const paginate = (pageNumber) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -57,7 +84,7 @@ const CardList = ({ view, tab }) => {
         className={`cards__container ${view === 'list' ? 'list-view' : 'tile-view'}`}
       >
         {cards.slice(0, 100).map((card) => (
-          <Card key={card.id} card={card} view={view} />
+          <Card key={card.id} card={card} view={view} tab={tab} />
         ))}
       </div>
       {location.pathname !== '/' ? (

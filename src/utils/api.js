@@ -68,6 +68,21 @@ export async function getUserFavouriteModels() {
   }
 }
 
+export async function getUserArchivedModels() {
+  try {
+    const res = await axios.get(`${baseURL}/get_all_archived/`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
+  }
+}
+
 export async function getDetailModel(elemId) {
   try {
     const res = await axios.get(`${baseURL}/model_details_json/${elemId}/`, {
