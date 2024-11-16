@@ -56,7 +56,7 @@ const CardList = ({ view, tab }) => {
       <div
         className={`cards__container ${view === 'list' ? 'list-view' : 'tile-view'}`}
       >
-        {cards.slice(0, maxCards).map((card) => (
+        {cards.slice(0, 100).map((card) => (
           <Card key={card.id} card={card} view={view} />
         ))}
       </div>

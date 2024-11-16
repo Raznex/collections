@@ -53,6 +53,21 @@ export async function getUserModels() {
   }
 }
 
+export async function getUserFavouriteModels() {
+  try {
+    const res = await axios.get(`${baseURL}/get_all_favorites/`, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
+  }
+}
+
 export async function getDetailModel(elemId) {
   try {
     const res = await axios.get(`${baseURL}/model_details_json/${elemId}/`, {
@@ -88,10 +103,11 @@ export async function getDetailModelForEdit(elemId) {
 
 export async function addModelToFavourite(elemId) {
   try {
-    const res = await axios.post(
+    const res = await fetch(
       `${baseURL}/model_details_json/${elemId}/toggle_favorite/`,
       {
-        withCredentials: true,
+        method: 'POST',
+        credentials: 'include',
       }
     );
     return res.data;
@@ -121,7 +137,7 @@ export async function getModelBySearch(body) {
   }
 }
 
-export async function editModel(body, elemId) {
+export async function editModel(body, images, elemId) {
   try {
     const formData = new FormData();
     formData.append('collectable_name', body.collectable_name);
@@ -135,7 +151,9 @@ export async function editModel(body, elemId) {
     formData.append('quantity', body.quantity);
     formData.append('Местонахождение', body.Местонахождение);
     formData.append('is_damaged', body.damage);
-    formData.append('new_photos', body.images);
+    images.forEach((image) => {
+      formData.append('new_photos', image.file);
+    });
     const res = await axios.post(
       `${baseURL}/edit_model_json/${elemId}/`,
       formData,
@@ -153,7 +171,7 @@ export async function editModel(body, elemId) {
   }
 }
 
-export async function addModel(body) {
+export async function addModel(body, images) {
   try {
     const formData = new FormData();
     formData.append('collectable_name', body.collectable_name);
@@ -167,7 +185,9 @@ export async function addModel(body) {
     formData.append('quantity', body.quantity);
     formData.append('Местонахождение', body.Местонахождение);
     formData.append('is_damaged', body.damage);
-    formData.append('image', body.image);
+    images.forEach((image) => {
+      formData.append('image', image.file);
+    });
     const res = await axios.post(`${baseURL}/my_models_json/`, formData, {
       withCredentials: true,
     });

@@ -98,7 +98,7 @@ const EditForm = ({ location }) => {
 
   const onSubmit = (data) => {
     if (location === `/editmodel/${cardId}`) {
-      editModel({ damage, currency, images, ...data }, cardId)
+      editModel({ damage, currency, ...data }, images, cardId)
         .then(() => {
           navigate(`/product/${cardId}`);
         })
@@ -106,7 +106,7 @@ const EditForm = ({ location }) => {
           setErrorPopup(true);
         });
     } else {
-      addModel({ damage, currency, images, ...data })
+      addModel({ damage, currency, ...data }, images)
         .then((res) => {
           navigate(`/product/${res.id}`);
         })

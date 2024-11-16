@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Card.scss';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
@@ -10,7 +10,8 @@ import nophoto from '../../assets/icons/nophoto.png';
 const Card = ({ card, view }) => {
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(card.isLiked);
-  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  const [image, setImage] = useState(card.thumbnail);
+  const { setErrorPopup } = useStore();
   const handleLikeClick = () => {
     addModelToFavourite(card.id)
       .then(() => {
@@ -20,6 +21,19 @@ const Card = ({ card, view }) => {
         setErrorPopup(true);
       });
   };
+
+  useEffect(() => {
+    if (location.pathname === '/my-models') {
+      setIsLiked(card.favorite);
+    }
+    if (card.thumbnail) {
+      const base64Prefix = 'data:image/jpeg;base64,';
+      const imageSrc = card.thumbnail.startsWith('data:image')
+        ? card.thumbnail
+        : `${base64Prefix}${card.thumbnail}`;
+      setImage(imageSrc);
+    }
+  }, []);
 
   return (
     <div className={`card card-${view}`}>
@@ -31,7 +45,7 @@ const Card = ({ card, view }) => {
         {/*/>*/}
         <label htmlFor={`select-card-${card.id}`}></label>
         <img
-          src={card.thumbnail ? card.thumbnail : nophoto}
+          src={card.thumbnail ? image : nophoto}
           alt={card?.collectable_name}
           className='card__img'
           onClick={() => navigate(`/product/${card.id}`)}
