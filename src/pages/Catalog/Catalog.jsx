@@ -10,36 +10,13 @@ import {
   getUserModels,
 } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
+import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 
 const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
-  const [cards, setCards] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { setErrorPopup } = useStore();
-  const location = useLocation();
+  const { isLoading } = useStore();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (location.pathname === '/') {
-      getAllModels()
-        .then((data) => {
-          const updatedCards = data.user_data.map((card) => ({
-            ...card,
-            isLiked: data.favorite_models.includes(card.id),
-          }));
-          setCards(updatedCards);
-          setIsLoading(false);
-        })
-        .catch(() => {
-          setErrorPopup(true);
-        });
-    } else if (location.pathname === '/my-models') {
-      getUserModels().then((data) => {
-        setCards(data.user_models);
-        setIsLoading(false);
-      });
-    }
-  }, []);
+  const [activeTab, setActiveTab] = useState('all'); // Активный таб
 
   const {
     register,
@@ -51,16 +28,15 @@ const Catalog = () => {
     },
   });
 
-  const onSubmit = (data) => {
-    getModelBySearch(data)
-      .then((data) => {
-        console.log(data);
-        // setCards(data.user_data);
-      })
-      .catch(() => {
-        setErrorPopup(true);
-      });
-  };
+  // const onSubmit = (data) => {
+  //   getModelBySearch(data)
+  //     .then((data) => {
+  //       // setCards(data.user_data);
+  //     })
+  //     .catch(() => {
+  //       setErrorPopup(true);
+  //     });
+  // };
 
   return (
     <>
@@ -71,9 +47,11 @@ const Catalog = () => {
       ) : (
         <div className='catalog'>
           <div className='catalog__left-block'>
-            <h2 className='catalog__title'>Каталог</h2>
+            <h2 className='catalog__title'>
+              {location.pathname === '/catalog' ? 'Каталог' : 'Мои модели'}
+            </h2>
             <form
-              onSubmit={handleSubmit(onSubmit)}
+              // onSubmit={handleSubmit(onSubmit)}
               className='catalog__search-box'
             >
               <input
@@ -84,7 +62,7 @@ const Catalog = () => {
               />
               <button type='submit' className='catalog__search-button'></button>
             </form>
-            <p className='catalog__categories'>Категория</p>
+            {/*<p className='catalog__categories'>Категория</p>*/}
             <button
               className='catalog__addbutton'
               onClick={() => {
@@ -95,6 +73,11 @@ const Catalog = () => {
             </button>
           </div>
           <div className='catalog__right-block'>
+            {location.pathname === '/catalog' ? (
+              ''
+            ) : (
+              <CatalogTabs setActiveTab={setActiveTab} activeTab={activeTab} />
+            )}
             <div className='catalog__box'>
               <p className='catalog__sort'>Сортировка</p>
               <div className='catalog__switcher'>
@@ -110,7 +93,7 @@ const Catalog = () => {
                 ></button>
               </div>
             </div>
-            <CardList cards={cards} view={activeView} />
+            <CardList view={activeView} tab={activeTab} />
           </div>
         </div>
       )}

@@ -22,7 +22,7 @@ const Profile = () => {
       city: 'Город',
     },
   });
-  const onSubmit = (data) => console.log(data);
+  // const onSubmit = (data) => console.log(data);
   return (
     <form className='profile'>
       <div className='profile__info'>

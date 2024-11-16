@@ -1,9 +1,11 @@
 @import '../../assets/styles/mixins/mixins';
 
 .cards {
+  width: 100%;
   @include flex-center(column, $align-items: flex-end);
   &__container {
     @include flex-center();
+    width: 100%;
     flex-wrap: wrap;
     gap: 30px 20px;
 

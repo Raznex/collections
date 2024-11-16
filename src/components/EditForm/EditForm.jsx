@@ -18,7 +18,6 @@ import { useStore } from '../../utils/store/store';
 
 const EditForm = ({ location }) => {
   const [images, setImages] = useState([]);
-  const [card, setCard] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [damage, setDamage] = useState('off');
   const [currency, setCurrency] = useState('RUB');
@@ -59,8 +58,8 @@ const EditForm = ({ location }) => {
           setDefaultValues(newDefaultValues);
           reset(newDefaultValues);
           setCurrency(data.form_data.buy_price_currency);
-          setCard(data);
           data.form_data.is_damaged ? setDamage('off') : setDamage('on');
+          setImages(data.photos);
           setIsLoading(false);
         })
         .catch(() => {
@@ -98,8 +97,8 @@ const EditForm = ({ location }) => {
   });
 
   const onSubmit = (data) => {
-    if (location === '/editmodel') {
-      editModel({ damage, currency, ...data }, cardId)
+    if (location === `/editmodel/${cardId}`) {
+      editModel({ damage, currency, images, ...data }, cardId)
         .then(() => {
           navigate(`/product/${cardId}`);
         })
@@ -107,7 +106,7 @@ const EditForm = ({ location }) => {
           setErrorPopup(true);
         });
     } else {
-      addModel({ damage, currency, ...data })
+      addModel({ damage, currency, images, ...data })
         .then((res) => {
           navigate(`/product/${res.id}`);
         })
@@ -387,21 +386,23 @@ const EditForm = ({ location }) => {
           </div>
           <h3 className='editForm__title'>Фотографии</h3>
           <div className='editForm__image-preview'>
-            {images.map((image, index) => (
-              <div key={index} className='editForm__image-container'>
-                <img
-                  src={image.preview}
-                  alt={`preview ${index}`}
-                  className='editForm__photo'
-                />
-                <div
-                  className='editForm__delete-icon'
-                  onClick={() => handleRemoveImage(index)}
-                >
-                  <Trash2 />
-                </div>
-              </div>
-            ))}
+            {images.length
+              ? images.map((image, index) => (
+                  <div key={index} className='editForm__image-container'>
+                    <img
+                      src={image.preview}
+                      alt={`preview ${index}`}
+                      className='editForm__photo'
+                    />
+                    <div
+                      className='editForm__delete-icon'
+                      onClick={() => handleRemoveImage(index)}
+                    >
+                      <Trash2 />
+                    </div>
+                  </div>
+                ))
+              : ''}
             <label htmlFor='addPhoto' className='editForm__file_label'>
               <Plus className='editForm__plus' />
             </label>
@@ -429,7 +430,7 @@ const EditForm = ({ location }) => {
             />
           </div>
           <div className='editForm__buttons'>
-            {page === '/editmodel' ? (
+            {page === `/editmodel/${cardId}` ? (
               <>
                 <button className='editForm__button'>Сохранить</button>
                 <button className='editForm__button editForm__button_archieve'>

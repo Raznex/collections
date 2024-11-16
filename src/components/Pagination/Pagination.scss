@@ -3,7 +3,6 @@
 
 .pagination {
   @include flex-center(row, space-between, center);
-  width: 175px;
   margin-top: 80px;
 
   &__left,
@@ -16,6 +15,14 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 16px 16px;
+    &:hover {
+      background-color: $orange;
+      cursor: pointer;
+    }
+    &:disabled {
+      background-color: $light-gray;
+      cursor: default;
+    }
 
     &.pagination__left {
       background-image: url('../../assets/icons/Arrow left.svg');

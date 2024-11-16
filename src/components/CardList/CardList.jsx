@@ -1,19 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './CardList.scss';
+import { useLocation } from 'react-router-dom';
+import { getAllModels, getUserModels } from '../../utils/api';
+import { useStore } from '../../utils/store/store';
 import Card from './../Card/Card';
 import Pagination from './../Pagination/Pagination';
 
-const CardList = ({ view, cards }) => {
-  const maxCards = view === 'list' ? 8 : 21;
-  const cardsPerPage = maxCards;
+const CardList = ({ view, tab }) => {
   const [currentPage, setCurrentPage] = useState(1);
+  const [cards, setCards] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const location = useLocation();
+  const { setErrorPopup, setLoading } = useStore();
+  const maxCards = view === 'list' ? 8 : 21;
 
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = cards.slice(indexOfFirstCard, indexOfLastCard);
-  const totalPages = Math.ceil(cards.length / cardsPerPage);
+  useEffect(() => {
+    if (location.pathname === '/catalog') {
+      getAllModels(currentPage, maxCards)
+        .then((data) => {
+          const updatedCards = data.all_models.map((card) => ({
+            ...card,
+            isLiked: data.favorite_models.includes(card.id),
+          }));
+          setCards(updatedCards);
+          setTotalPages(Math.ceil(data.total_elements / maxCards));
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    } else if (location.pathname === '/my-models') {
+      getUserModels(currentPage, maxCards).then((data) => {
+        setCards(data.user_models);
+        setLoading(false);
+      });
+    } else if (location.pathname === '/') {
+      getAllModels(1, 20)
+        .then((data) => {
+          setCards(data.all_models);
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    }
+  }, [currentPage, maxCards]);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <div className='cards'>
@@ -24,11 +60,15 @@ const CardList = ({ view, cards }) => {
           <Card key={card.id} card={card} view={view} />
         ))}
       </div>
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        paginate={paginate}
-      />
+      {location.pathname !== '/' ? (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          paginate={paginate}
+        />
+      ) : (
+        ''
+      )}
     </div>
   );
 };

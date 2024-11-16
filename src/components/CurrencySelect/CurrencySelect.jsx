@@ -40,7 +40,13 @@ const CurrencySelect = ({ isEditing, currency, setCurrency }) => {
     <div ref={pickerRef}>
       <div
         className={`currencySelect ${isProfile ? 'currencySelect_profile' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (location === '/profile') {
+            isEditing && setIsOpen(!isOpen);
+          } else {
+            setIsOpen(!isOpen);
+          }
+        }}
       >
         <div
           className={`currencySelect__selected-option ${isEditing ? 'currencySelect__selected-option_editing' : ''}`}

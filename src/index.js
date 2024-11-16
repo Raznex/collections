@@ -13,6 +13,7 @@ import Catalog from './pages/Catalog/Catalog';
 import PageNotFound from './components/PageNotFound/PageNotFound';
 import RedirectAuth from './utils/PrivateRoutes/RedirectAuth';
 import RedirectUnAuth from './utils/PrivateRoutes/RedirectUnAuth';
+import MainPage from './pages/MainPage/MainPage';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
       // Публичные маршруты
       {
         index: true,
+        element: <MainPage />,
+      },
+      {
+        index: true,
+        path: 'catalog',
         element: <Catalog />,
       },
       {

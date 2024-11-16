@@ -4,10 +4,14 @@ import { csrftoken } from './csrfToken/csrfToken';
 // export const baseURL = 'http://dev.cars.nsspro.ru';
 export const baseURL = 'http://localhost:8000/api';
 
-export async function getAllModels() {
+export async function getAllModels(page, perPage) {
   try {
     const res = await axios.get(`${baseURL}/home_json/`, {
       withCredentials: true,
+      params: {
+        page: page,
+        per_page: perPage,
+      },
     });
     return res.data;
   } catch (err) {
@@ -120,15 +124,18 @@ export async function getModelBySearch(body) {
 export async function editModel(body, elemId) {
   try {
     const formData = new FormData();
-    formData.append('modelName', body.modelName);
-    formData.append('manufacturer', body.manufacturer);
-    formData.append('price', body.price);
-    formData.append('modelCode', body.modelCode);
-    formData.append('category', body.category);
-    formData.append('year', body.year);
-    formData.append('location', body.location);
-    formData.append('damage', body.damage);
-    formData.append('csrfmiddlewaretoken', csrftoken);
+    formData.append('collectable_name', body.collectable_name);
+    formData.append('Производитель', body.Производитель);
+    formData.append('Категория', body.Категория);
+    formData.append('article', body.article);
+    formData.append('buy_price', body.buy_price);
+    formData.append('buy_price_currency', body.currency);
+    formData.append('Год', body.Год);
+    formData.append('scale', body.scale);
+    formData.append('quantity', body.quantity);
+    formData.append('Местонахождение', body.Местонахождение);
+    formData.append('is_damaged', body.damage);
+    formData.append('new_photos', body.images);
     const res = await axios.post(
       `${baseURL}/edit_model_json/${elemId}/`,
       formData,
@@ -160,8 +167,7 @@ export async function addModel(body) {
     formData.append('quantity', body.quantity);
     formData.append('Местонахождение', body.Местонахождение);
     formData.append('is_damaged', body.damage);
-
-    formData.append('damage', body.damage);
+    formData.append('image', body.image);
     const res = await axios.post(`${baseURL}/my_models_json/`, formData, {
       withCredentials: true,
     });

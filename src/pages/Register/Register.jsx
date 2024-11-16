@@ -30,7 +30,6 @@ const Register = () => {
 
   const onSubmit = (data) => {
     if (data.password === data.confirm_password) {
-      console.log(data);
       register(data)
         .then((res) => {
           navigate('/login');
@@ -42,8 +41,7 @@ const Register = () => {
   };
 
   const sendCode = (data) => {
-    sendVerificationCode(data).then((res) => {
-      console.log(res);
+    sendVerificationCode(data).then(() => {
       setHasCode(true);
     });
   };

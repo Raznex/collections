@@ -142,7 +142,8 @@
     }
 
     &_text {
-      @include text-style(500, 20px, 27px, $black, left);
+      padding-top: 15px;
+      @include text-style(400, 20px, 27px, $black, left);
     }
   }
 

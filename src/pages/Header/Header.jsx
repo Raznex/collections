@@ -54,7 +54,7 @@ const Header = () => {
             Логотип
           </a>
           <ul className='header__menu'>
-            <a className='header__link' href='/'>
+            <a className='header__link' href='/catalog'>
               Каталог
             </a>
             <a className='header__link' href='/my-models'>
@@ -86,8 +86,8 @@ const Header = () => {
                       </a>
                     </li>
                     <li className='menu__list'>
-                      <a href='/' className='menu__list'>
-                        Избранное
+                      <a href='/my-models' className='menu__list'>
+                        Мои модели
                       </a>
                     </li>
                     <li className='menu__line'></li>

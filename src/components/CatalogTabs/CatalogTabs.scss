@@ -1,0 +1,52 @@
+@import '../../assets/styles/mixins/mixins';
+@import '../../assets/styles/colors/colors';
+
+.catalog {
+  &__tabs {
+    display: flex;
+    width: 100%;
+    position: relative;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #ccc;
+    justify-content: flex-start;
+  }
+
+  &__tab {
+    @include text-style(
+      $font-weight: 600,
+      $font-size: 24px,
+      $line-height: 16px,
+      $color: $gray,
+      $text-align: center
+    );
+    position: relative;
+    padding: 10px 100px 10px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__tab.active {
+    color: $black;
+  }
+
+  &__tab::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $orange;
+    opacity: 0;
+    transform: scaleX(0);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  &__tab.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}

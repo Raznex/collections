@@ -66,7 +66,7 @@ const Product = () => {
             <p className='loading'>Произошла ошибка</p>
           ) : (
             <>
-              <a href='/' className='product__back'>
+              <a href='/catalog' className='product__back'>
                 Назад
               </a>
               <p className='product__error'>{error}</p>
@@ -78,45 +78,57 @@ const Product = () => {
                   <div className='product__right_up'>
                     <div className='product__info'>
                       <h2 className='product__title'>
-                        {card?.model_data.collectable_name}
+                        {card?.collectable_name}
                       </h2>
                       <ul className='product__settings'>
                         <li className='product__item'>
                           <span className='product__item_span'>
                             Производитель:&nbsp;
                           </span>
-                          {card?.attributes_data.Производитель}
+                          {card?.attributes.Производитель}
                         </li>
-                        {/*<li className='product__item'>*/}
-                        {/*  <span className='product__item_span'>*/}
-                        {/*    Код модели:&nbsp;*/}
-                        {/*  </span>*/}
-                        {/*  {card?.attributes_data.Производитель}*/}
-                        {/*</li>*/}
+                        <li className='product__item'>
+                          <span className='product__item_span'>
+                            Код модели:&nbsp;
+                          </span>
+                          {card?.article}
+                        </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
                             Категория:&nbsp;
                           </span>
-                          {card?.attributes_data.Категория}
+                          {card?.attributes.Категория}
+                        </li>
+                        <li className='product__item'>
+                          <span className='product__item_span'>
+                            Масштаб:&nbsp;
+                          </span>
+                          {card?.scale}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>Год:&nbsp;</span>
-                          {card?.attributes_data.Год}
+                          {card?.attributes.Год}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
                             Место нахождения:&nbsp;
                           </span>
-                          {card?.attributes_data.Местонахождение}
+                          {card?.attributes.Местонахождение}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
                             Упаковка:&nbsp;
                           </span>
-                          Не повреждена
+                          {card.is_damaged ? 'Повреждена' : 'Не повреждена'}
+                        </li>
+                        <li className='product__item'>
+                          <span className='product__item_span'>
+                            Продажа:&nbsp;
+                          </span>
+                          {card.is_for_sale ? 'Продается' : 'Не продается'}
                         </li>
                       </ul>
-                      <button className='product__buy'>Купить</button>
+                      {/*<button className='product__buy'>Купить</button>*/}
                     </div>
                     <div className='product__editing'>
                       <div className='product__tools'>
@@ -144,8 +156,8 @@ const Product = () => {
                       <p className='product__price'>
                         Цена:{' '}
                         <span className='product__price_span'>
-                          {card.average_price ? card.average_price : 0}&nbsp;
-                          {'Р'}
+                          {card.buy_price ? card.buy_price : 0}&nbsp;
+                          {card.buy_price_currency}
                         </span>
                       </p>
                     </div>
@@ -156,10 +168,9 @@ const Product = () => {
               <div className='product__description'>
                 <h3 className='product__description_title'>Описание:</h3>
                 <p className='product__description_text'>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Aperiam consequatur debitis deleniti deserunt distinctio enim
-                  eum harum in libero minus molestias nobis nulla, omnis
-                  possimus quam quis, sint suscipit, voluptate.
+                  {card.description.length
+                    ? card.description
+                    : 'Описание не добавлено'}
                 </p>
                 <p className='product__date'>Дата публикации 23 июня 2024</p>
               </div>

@@ -2,16 +2,18 @@
 @import '../../assets/styles/colors/colors';
 
 .card {
-  @include flex-center(row, space-between, center);
+  @include flex-center(row, space-between, flex-start);
   border: none;
   background-color: $white;
   width: 100%;
-  padding: 15px;
+  height: 270px;
+  padding: 21px;
   border-radius: 10px;
   box-shadow: 0 1px 11px 1px #00000012;
 
   &__img-container {
-    width: 30%;
+    width: 300px;
+    flex-shrink: 0;
     position: relative;
     margin-right: 20px;
     cursor: pointer;
@@ -48,19 +50,27 @@
   }
 
   &__img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+    width: 300px;
+    height: 230px;
+    object-fit: contain;
+    background-color: $gray;
   }
 
   &__description {
-    @include flex-center(column);
-    width: 70%;
+    @include flex-center(column, $justify-content: space-between);
+    width: 100%;
+    height: 100%;
     gap: 5px;
   }
 
   &__container {
-    @include flex-center(row, space-between);
+    @include flex-center(column, flex-start, flex-start);
+    gap: 15px;
+    width: 100%;
+  }
+
+  &__namelike {
+    @include flex-center(row, space-between, flex-start);
     width: 100%;
   }
 
@@ -70,6 +80,10 @@
   }
 
   &__like {
+    @include button-style(
+      $background-color: transparent,
+      $background-color-hover: transparent
+    );
     width: 22.5px;
     height: 20.8px;
     background-image: url('../../assets/icons/like.svg');
@@ -108,7 +122,7 @@
     text-align: left;
   }
 
-  &--tile {
+  &-tile {
     @include flex-center(column, space-between, center);
     width: 320px;
     height: 321px;
@@ -118,11 +132,12 @@
       width: 100%;
       height: 205px;
       margin-right: 0;
+      margin-bottom: 15px;
     }
 
     .card__img {
       width: 100%;
-      height: 100%;
+      height: 205px;
     }
 
     .card__description {
