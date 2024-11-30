@@ -30,6 +30,7 @@ export async function login(body) {
     const formData = new FormData();
     formData.append('email', body.email);
     formData.append('password', body.password);
+    formData.append('nickname', body.nickname);
     formData.append('csrfmiddlewaretoken', csrftoken);
     const res = await axios.post(`${baseURL}/login/`, formData, {
       withCredentials: true,

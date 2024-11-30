@@ -5,16 +5,18 @@ import CreateInput from '../CreateInput/CreateInput';
 
 import './EditForm.scss';
 
-import CurrencySelect from '../CurrencySelect/CurrencySelect';
+import CurrencySelect from '../Selects/CurrencySelect/CurrencySelect';
 import {
   addModel,
   addModelToFavourite,
+  deleteModel,
   editModel,
   getDetailModel,
   getDetailModelForEdit,
 } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../utils/store/store';
+import ManufacturerSelect from '../Selects/ManufacturerSelect/ManufacturerSelect';
 
 const EditForm = ({ location }) => {
   const [images, setImages] = useState([]);
@@ -34,7 +36,7 @@ const EditForm = ({ location }) => {
     description: '',
   });
 
-  const { isErrorPopupOpen, setErrorPopup } = useStore();
+  const { setErrorPopup } = useStore();
   const cardId = useParams().id;
   const navigate = useNavigate();
 
@@ -44,15 +46,17 @@ const EditForm = ({ location }) => {
       getDetailModelForEdit(cardId)
         .then((data) => {
           const newDefaultValues = {
-            collectable_name: data.form_data.collectable_name,
-            Производитель: 'data.form_data.Производитель',
-            article: data.form_data.article,
-            Категория: 'data.form_data.Категория',
-            Год: 'data.form_data.Год',
-            scale: data.form_data.scale,
-            Местонахождение: 'data.form_data.Местонахождение',
-            quantity: data.form_data.quantity,
-            buy_price: data.form_data.buy_price,
+            collectable_name:
+              data.form_data.collectable_name || 'Название модели',
+            Производитель: 'data.form_data.Производитель' || 'Производитель',
+            article: data.form_data.article || 'article',
+            Категория: 'data.form_data.Категория' || 'Категория',
+            Год: 'data.form_data.Год' || 'Год',
+            scale: data.form_data.scale || 'Масштаб',
+            Местонахождение:
+              'data.form_data.Местонахождение' || 'Местонахождение',
+            quantity: data.form_data.quantity || 'Колличество',
+            buy_price: data.form_data.buy_price || 'Цена',
             description: data.form_data.description,
           };
           setDefaultValues(newDefaultValues);
@@ -69,7 +73,7 @@ const EditForm = ({ location }) => {
     } else {
       setIsLoading(false);
     }
-  }, [cardId]);
+  }, []);
 
   const page = window.location.pathname;
   const handleImageChange = (e) => {
@@ -108,12 +112,20 @@ const EditForm = ({ location }) => {
     } else {
       addModel({ damage, currency, ...data }, images)
         .then((res) => {
-          navigate(`/product/${res.id}`);
+          navigate(`/product/${res.model_id}`);
         })
         .catch(() => {
           setErrorPopup(true);
         });
     }
+  };
+
+  const deleteCard = () => {
+    deleteModel(cardId)
+      .then(() => {
+        navigate('/my-models');
+      })
+      .catch(() => setErrorPopup(true));
   };
   return (
     <>
@@ -158,10 +170,17 @@ const EditForm = ({ location }) => {
                     name='Производитель'
                     control={control}
                     render={({ field }) => (
-                      <CreateInput
+                      <ManufacturerSelect
                         {...field}
-                        error={!!errors.Производитель}
-                        placeholder={'Производитель'}
+                        options={[
+                          'Hot Wheels',
+                          'Majorette',
+                          'Matchbox',
+                          'Mini GT',
+                          'Poprace',
+                          'Tarmac Works',
+                        ]}
+                        placeholder='Выберите производителя'
                       />
                     )}
                   />
@@ -432,13 +451,24 @@ const EditForm = ({ location }) => {
           <div className='editForm__buttons'>
             {page === `/editmodel/${cardId}` ? (
               <>
-                <button className='editForm__button'>Сохранить</button>
+                <button type={'submit'} className='editForm__button'>
+                  Сохранить
+                </button>
                 <button className='editForm__button editForm__button_archieve'>
                   В архив
                 </button>
+                <button
+                  type={'button'}
+                  onClick={() => deleteCard()}
+                  className='editForm__button editForm__button_delete'
+                >
+                  Удалить
+                </button>
               </>
             ) : (
-              <button className='editForm__button'>Добавить модель</button>
+              <button type={'submit'} className='editForm__button'>
+                Добавить модель
+              </button>
             )}
           </div>
         </form>

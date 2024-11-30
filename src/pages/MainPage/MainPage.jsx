@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './MainPage.scss';
 import { useForm } from 'react-hook-form';
 import CardList from '../../components/CardList/CardList';
+import { getAllModels } from '../../utils/api';
+import { useStore } from '../../utils/store/store';
 
 const MainPage = () => {
+  const [cards, setCards] = useState([]);
+  const { isLoading, setErrorPopup, setLoading } = useStore();
   const {
     register,
     handleSubmit,
@@ -13,6 +17,18 @@ const MainPage = () => {
       searchName: '',
     },
   });
+  useEffect(() => {
+    {
+      getAllModels(1, 20)
+        .then((data) => {
+          setCards(data.all_models);
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    }
+  }, []);
 
   return (
     <div className='mainPage'>
@@ -33,7 +49,7 @@ const MainPage = () => {
           <button type='submit' className='mainPage__search-button'></button>
         </form>
       </div>
-      <CardList view={'tile'} />
+      <CardList view={'tile'} cards={cards} />
     </div>
   );
 };

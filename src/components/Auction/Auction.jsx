@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { takePriceAuction } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 
-const Auction = ({ cardId }) => {
+const Auction = ({ cardId, card }) => {
   const { isErrorPopupOpen, setErrorPopup } = useStore();
   const navigate = useNavigate();
 
@@ -35,10 +35,12 @@ const Auction = ({ cardId }) => {
       <div className='auction__price'>
         <p className='auction__market-price'>Рыночная цена:</p>
         <p className='auction__market-price auction__market-price_currency'>
-          19000 Р
+          {card.average_price} {card.buy_price_currency}
         </p>
       </div>
-      <p className='auction__voted'>Количество проголосовавших: 1234</p>
+      <p className='auction__voted'>
+        Количество проголосовавших: {card.voters_count}
+      </p>
       <div className='auction__your-price'>
         <label className='auction__label'>Предложите свою цену</label>
         <form onSubmit={handleSubmit(onSubmit)} className='auction__form'>

@@ -7,6 +7,8 @@ import {
   checkAuth,
   getAllModels,
   getModelBySearch,
+  getUserArchivedModels,
+  getUserFavouriteModels,
   getUserModels,
 } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
@@ -14,9 +16,15 @@ import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 
 const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
-  const { isLoading } = useStore();
+  const { isLoading, setErrorPopup, setLoading } = useStore();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('all'); // Активный таб
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cards, setCards] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [search, setSearch] = useState('');
+  const location = useLocation();
+  const maxCards = activeView === 'list' ? 8 : 21;
 
   const {
     register,
@@ -28,15 +36,60 @@ const Catalog = () => {
     },
   });
 
-  // const onSubmit = (data) => {
-  //   getModelBySearch(data)
-  //     .then((data) => {
-  //       // setCards(data.user_data);
-  //     })
-  //     .catch(() => {
-  //       setErrorPopup(true);
-  //     });
-  // };
+  const onSubmit = (data) => {
+    setSearch(data.searchName);
+  };
+
+  useEffect(() => {
+    if (location.pathname === '/catalog') {
+      getAllModels(currentPage, maxCards)
+        .then((data) => {
+          const updatedCards = data.all_models.map((card) => ({
+            ...card,
+            isLiked: data.favorite_models.includes(card.id),
+          }));
+          setCards(updatedCards);
+          setTotalPages(Math.ceil(data.total_elements / maxCards));
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    } else if (location.pathname === '/my-models' && activeTab === 'all') {
+      getUserModels(currentPage, maxCards, search).then((data) => {
+        setCards(data.user_models);
+        setTotalPages(Math.ceil(data.total_elements / maxCards));
+        setLoading(false);
+      });
+    } else if (
+      location.pathname === '/my-models' &&
+      activeTab === 'favorites'
+    ) {
+      getUserFavouriteModels(currentPage, maxCards)
+        .then((data) => {
+          const updatedCards = data.favorite_models.map((card) => ({
+            ...card,
+            isLiked: true,
+          }));
+          setCards(updatedCards);
+          setTotalPages(Math.ceil(data.favorite_models.length / maxCards));
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    } else if (location.pathname === '/my-models' && activeTab === 'archive') {
+      getUserArchivedModels(currentPage, maxCards)
+        .then((data) => {
+          setCards(data.archived_models);
+          setTotalPages(Math.ceil(data.archived_models.length / maxCards));
+          setLoading(false);
+        })
+        .catch(() => {
+          setErrorPopup(true);
+        });
+    }
+  }, [currentPage, maxCards, activeTab, search]);
 
   return (
     <>
@@ -51,7 +104,7 @@ const Catalog = () => {
               {location.pathname === '/catalog' ? 'Каталог' : 'Мои модели'}
             </h2>
             <form
-              // onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onSubmit)}
               className='catalog__search-box'
             >
               <input
@@ -93,7 +146,15 @@ const Catalog = () => {
                 ></button>
               </div>
             </div>
-            <CardList view={activeView} tab={activeTab} />
+            <CardList
+              view={activeView}
+              activeTab={activeTab}
+              setCurrentPage={setCurrentPage}
+              cards={cards}
+              totalPages={totalPages}
+              currentPage={currentPage}
+              maxCards={maxCards}
+            />
           </div>
         </div>
       )}

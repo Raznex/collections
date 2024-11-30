@@ -19,7 +19,7 @@ const Register = () => {
     defaultValues: {
       email: '',
       password: '',
-      userName: '',
+      nickname: '',
       confirm_password: '',
       code: '',
     },

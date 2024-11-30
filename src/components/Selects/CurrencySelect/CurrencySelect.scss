@@ -1,0 +1,56 @@
+@import '../../../assets/styles/mixins/mixins';
+@import '../../../assets/styles/colors/colors';
+
+.currencySelect {
+  position: relative;
+  width: 80px;
+  cursor: pointer;
+  user-select: none;
+
+  &__selected-option {
+    @include flex-center($justify-content: space-between);
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 24px;
+
+    &_editing {
+      background-color: $select-gray;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    top: 47px;
+    left: 0;
+    width: 100%;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1000;
+
+    &_editing {
+      background-color: $select-gray;
+    }
+  }
+
+  &__arrow {
+    &_disable {
+      display: none;
+    }
+  }
+
+  &__option {
+    padding: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+
+    &_selected {
+      background-color: $orange;
+    }
+
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+}

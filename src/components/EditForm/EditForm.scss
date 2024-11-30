@@ -183,5 +183,12 @@
         $background-color-hover: $button-gray-hover
       );
     }
+    &_delete {
+      @include button-style(
+        $padding: 15px,
+        $background-color: $red,
+        $background-color-hover: $red-hover
+      );
+    }
   }
 }

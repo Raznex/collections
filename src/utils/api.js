@@ -38,10 +38,15 @@ export async function checkAuth() {
   }
 }
 
-export async function getUserModels() {
+export async function getUserModels(page, perPage, search) {
   try {
     const res = await axios.get(`${baseURL}/my_models_json/`, {
       withCredentials: true,
+      params: {
+        page: page,
+        per_page: perPage,
+        search_query: search,
+      },
     });
     return res.data;
   } catch (err) {
@@ -122,6 +127,25 @@ export async function addModelToFavourite(elemId) {
       `${baseURL}/model_details_json/${elemId}/toggle_favorite/`,
       {
         method: 'POST',
+        credentials: 'include',
+      }
+    );
+    return res.data;
+  } catch (err) {
+    if (err.response) {
+      throw new Error(err.response.status);
+    } else {
+      throw new Error('Request failed');
+    }
+  }
+}
+
+export async function deleteModel(elemId) {
+  try {
+    const res = await fetch(
+      `${baseURL}/my_models/delete-model_json/${elemId}/`,
+      {
+        method: 'DELETE',
         credentials: 'include',
       }
     );

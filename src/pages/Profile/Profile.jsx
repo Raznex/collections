@@ -4,7 +4,7 @@ import './Profile.scss';
 import { useForm } from 'react-hook-form';
 import CountryPicker from '../../components/CountryPicker/CountryPicker';
 import ava from '../../assets/icons/panda.jpg';
-import CurrencySelect from '../../components/CurrencySelect/CurrencySelect';
+import CurrencySelect from '../../components/Selects/CurrencySelect/CurrencySelect';
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currency, setCurrency] = useState('RUB');

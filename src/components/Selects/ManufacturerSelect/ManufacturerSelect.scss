@@ -1,36 +1,33 @@
-@import '../../assets/styles/mixins/mixins';
-@import '../../assets/styles/colors/colors';
+@import '../../../assets/styles/mixins/mixins';
+@import '../../../assets/styles/colors/colors';
 
-.currencySelect {
+.manufacturerSelect {
   position: relative;
-  width: 80px;
   cursor: pointer;
+  width: 425px;
   user-select: none;
 
   &__selected-option {
+    height: 50px;
     @include flex-center($justify-content: space-between);
     background-color: transparent;
-    border-radius: 8px;
-    padding: 5px;
-    font-size: 24px;
-
-    &_editing {
-      background-color: $select-gray;
-    }
+    outline: none;
+    border: 1px solid $input-gray;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
   }
 
   &__options {
     position: absolute;
-    top: 47px;
+    border: 1px solid $input-gray;
+    border-radius: 5px;
+    top: 49px;
     left: 0;
     width: 100%;
     background-color: transparent;
     overflow: hidden;
     z-index: 1000;
-
-    &_editing {
-      background-color: $select-gray;
-    }
   }
 
   &__arrow {
@@ -40,8 +37,9 @@
   }
 
   &__option {
+    background-color: $white;
     padding: 10px;
-    font-size: 24px;
+    font-size: 14px;
     display: flex;
     align-items: center;
 

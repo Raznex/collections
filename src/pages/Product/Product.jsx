@@ -56,6 +56,10 @@ const Product = () => {
     }
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <section className='product'>
       {isLoading ? (
@@ -66,9 +70,9 @@ const Product = () => {
             <p className='loading'>Произошла ошибка</p>
           ) : (
             <>
-              <a href='/catalog' className='product__back'>
+              <button onClick={() => navigate(-1)} className='product__back'>
                 Назад
-              </a>
+              </button>
               <p className='product__error'>{error}</p>
               <div className='product__container'>
                 <div className='product__slider'>
@@ -162,7 +166,7 @@ const Product = () => {
                       </p>
                     </div>
                   </div>
-                  <Auction cardId={cardId} />
+                  <Auction cardId={cardId} card={card} />
                 </div>
               </div>
               <div className='product__description'>
@@ -172,7 +176,9 @@ const Product = () => {
                     ? card.description
                     : 'Описание не добавлено'}
                 </p>
-                <p className='product__date'>Дата публикации 23 июня 2024</p>
+                <p className='product__date'>
+                  Дата публикации {card.creation_date}
+                </p>
               </div>
             </>
           )}

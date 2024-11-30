@@ -33,7 +33,7 @@ const Card = ({ card, view, tab }) => {
         : `${base64Prefix}${card.thumbnail}`;
       setImage(imageSrc);
     }
-  }, []);
+  }, [tab]);
 
   return (
     <div className={`card card-${view}`}>
