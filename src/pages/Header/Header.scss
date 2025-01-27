@@ -16,6 +16,24 @@
     @include flex-center();
   }
 
+  &__burger-button {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &.header__burger-button_active {
+      color: $orange;
+    }
+  }
+
+  &__burger {
+    display: none;
+  }
+
   &__logo {
     @include text-style($font-size: 16px, $color: $white);
     margin-right: 60px;
@@ -26,6 +44,10 @@
     @include flex-center();
     list-style: none;
     gap: 50px;
+  }
+
+  &__menu-links {
+    display: none;
   }
 
   &__link {
@@ -137,5 +159,64 @@
     width: 100%;
     height: 1px;
     background-color: $description-gray;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    &__container {
+      @include flex-center(row, space-between);
+      @include block;
+      margin: 15px 0;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__burger-button {
+      display: block;
+      cursor: pointer;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: $white;
+    }
+
+    &__burger {
+      @include flex-center();
+      display: none;
+      flex-direction: column;
+      background-color: $dark-charcoal;
+      position: absolute;
+      z-index: 100;
+      top: 80px;
+      left: 0;
+      width: 200px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      &_active {
+        display: flex;
+      }
+    }
+
+    &__menu-links {
+      @include flex-center(column, center, flex-start);
+      list-style: none;
+      gap: 10px;
+
+      &_active {
+        display: flex;
+      }
+    }
+
+    &__account {
+      @include flex-center();
+      gap: 10px;
+    }
+    &__burger-menu {
+      top: 65px;
+    }
   }
 }

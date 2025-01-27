@@ -42,3 +42,20 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  .footer {
+    &__container {
+      margin: 15px 0;
+    }
+
+    &__menu {
+      gap: 10px;
+    }
+
+    &__list {
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+}
