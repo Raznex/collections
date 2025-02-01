@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Header.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import avatar from '../../assets/icons/panda.jpg';
@@ -48,9 +48,48 @@ const Header = () => {
     };
   }, [anchorEl]);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className='header'>
       <div className='header__container'>
+        <button
+          className={`header__burger-button ${
+            isMenuOpen ? 'header__burger-button_active' : ''
+          }`}
+          onClick={toggleMenu}
+        >
+          ☰
+        </button>
+        <nav
+          className={`header__burger ${
+            isMenuOpen ? 'header__burger_active' : ''
+          }`}
+        >
+          <ul
+            className={`header__menu-links ${
+              isMenuOpen ? 'header__menu-links_active' : ''
+            }`}
+          >
+            <a href='/' className='header__logo'>
+              Логотип
+            </a>
+            <a className='header__link' href='/catalog'>
+              {constLanguagePack.Catalog[language]}
+            </a>
+            {isAuthenticated && (
+              <li>
+                <a className='header__link' href='/my-models'>
+                  {constLanguagePack.MyModels[language]}
+                </a>
+              </li>
+            )}
+          </ul>
+        </nav>
         <nav className='header__nav'>
           <a href='/' className='header__logo'>
             Логотип
@@ -59,9 +98,11 @@ const Header = () => {
             <a className='header__link' href='/catalog'>
               {constLanguagePack.Catalog[language]}
             </a>
-            <a className='header__link' href='/my-models'>
-              {constLanguagePack.MyModels[language]}
-            </a>
+            {isAuthenticated && (
+              <a className='header__link' href='/my-models'>
+                {constLanguagePack.MyModels[language]}
+              </a>
+            )}
           </ul>
         </nav>
         <div className='header__account'>
