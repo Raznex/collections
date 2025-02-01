@@ -28,7 +28,7 @@ export async function register(body) {
 export async function login(body) {
   try {
     const formData = new FormData();
-    formData.append('email', body.email);
+    formData.append('email', body.email.trim());
     formData.append('password', body.password);
     formData.append('nickname', body.nickname);
     formData.append('csrfmiddlewaretoken', csrftoken);

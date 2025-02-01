@@ -11,7 +11,7 @@ const Card = ({ card, view, tab }) => {
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(card.isLiked);
   const [image, setImage] = useState(card.thumbnail);
-  const { setErrorPopup } = useStore();
+  const { setErrorPopup, language } = useStore();
   const handleLikeClick = () => {
     addModelToFavourite(card.id)
       .then(() => {

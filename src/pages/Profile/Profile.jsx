@@ -5,12 +5,15 @@ import { useForm } from 'react-hook-form';
 import CountryPicker from '../../components/CountryPicker/CountryPicker';
 import ava from '../../assets/icons/panda.jpg';
 import CurrencySelect from '../../components/Selects/CurrencySelect/CurrencySelect';
+import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 const Profile = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currency, setCurrency] = useState('RUB');
   const toggleEditButton = () => {
     !isEditing ? setIsEditing(true) : setIsEditing(false);
   };
+  const { language } = useStore();
   const {
     register,
     formState: { errors },
@@ -33,17 +36,23 @@ const Profile = () => {
             <Pencil />
           </div>
         </div>
-        <p className='profile__nickname'>nickname</p>
+        <p className='profile__nickname'>
+          {constLanguagePack.NickName[language]}
+        </p>
         <input
           type='text'
           className={`profile__name ${isEditing ? 'profile__name_active' : ''}`}
           {...register('name')}
           disabled={!isEditing}
         />
-        <p className='profile__date'>Дата создания аккаунта: 12 июня 2020</p>
+        <p className='profile__date'>
+          {constLanguagePack.DateCreateAccount[language]}: 12 июня 2020
+        </p>
       </div>
       <div className='profile__settings'>
-        <h1 className='profile__title'>Настройки</h1>
+        <h1 className='profile__title'>
+          {constLanguagePack.Settings[language]}
+        </h1>
         <input
           type='text'
           className={`profile__email ${isEditing ? 'profile__email_active' : ''}`}
@@ -53,7 +62,9 @@ const Profile = () => {
         <div className='profile__location'>
           <div className='profile__inputs'>
             <div className='profile__inputs_left'>
-              <h2 className='profile__subtitle'>Местоположение</h2>
+              <h2 className='profile__subtitle'>
+                {constLanguagePack.Location[language]}
+              </h2>
               <CountryPicker isEditing={isEditing} />
               <input
                 type='text'
@@ -63,7 +74,9 @@ const Profile = () => {
               />
             </div>
             <div className='profile__inputs_left'>
-              <h2 className='profile__subtitle'>Валюта</h2>
+              <h2 className='profile__subtitle'>
+                {constLanguagePack.Currency[language]}
+              </h2>
               <CurrencySelect
                 setCurrency={setCurrency}
                 currency={currency}
@@ -84,10 +97,10 @@ const Profile = () => {
             className='profile__button profile__button_pass'
             type='button'
           >
-            Изменить пароль
+            {constLanguagePack.ChangePassword[language]}
           </button>
           <button className='profile__button' type='button'>
-            Выйти из аккаунта
+            {constLanguagePack.LogOut[language]}
           </button>
         </div>
       </div>

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import CSRFToken from '../../utils/csrfToken/csrfToken';
 import { useStore } from '../../utils/store/store';
 import { checkAuth } from '../../utils/api';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 const Login = () => {
   const {
     handleSubmit,
@@ -19,7 +20,7 @@ const Login = () => {
       password: '',
     },
   });
-  const { setErrorPopup, setIsAuthenticated } = useStore();
+  const { setErrorPopup, setIsAuthenticated, language } = useStore();
   const navigate = useNavigate();
   const onSubmit = (data) => {
     login(data)
@@ -33,7 +34,7 @@ const Login = () => {
   };
   return (
     <div className='login'>
-      <h1 className='login__title'>Вход</h1>
+      <h1 className='login__title'>{constLanguagePack.SignIn.language}</h1>
       <form onSubmit={handleSubmit(onSubmit)} className='login__form'>
         <div className='login__input-container'>
           <Controller
@@ -46,7 +47,7 @@ const Login = () => {
               <InputLogin
                 {...field}
                 error={!!errors.email}
-                placeholder={'Email/Никнейм'}
+                placeholder={`${constLanguagePack.Email[language]}/${constLanguagePack.NickName[language]}`}
               />
             )}
           />
@@ -66,7 +67,7 @@ const Login = () => {
                 type={'password'}
                 {...field}
                 error={!!errors.password}
-                placeholder={'Password'}
+                placeholder={`${constLanguagePack.Password[language]}`}
               />
             )}
           />
@@ -75,7 +76,7 @@ const Login = () => {
           )}
         </div>
         <a href='#' className='login__change-password'>
-          Забыли пароль?
+          {constLanguagePack.ForgotYourPassword[language]}
         </a>
         <button type='submit' className='login__submit'>
           Войти

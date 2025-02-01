@@ -5,6 +5,7 @@ import Carousel from '../../components/Carousel/Carousel';
 import { addModelToFavourite, getDetailModel } from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Product = () => {
   const [isLiked, setIsLiked] = useState(false);
@@ -13,7 +14,8 @@ const Product = () => {
   const [error, setError] = useState(null);
   const cardId = useParams().id;
   const navigate = useNavigate();
-  const { isAuthenticated, setErrorPopup, setRegisterPopup } = useStore();
+  const { isAuthenticated, setErrorPopup, setRegisterPopup, language } =
+    useStore();
 
   useEffect(() => {
     setIsLoading(true);
@@ -87,25 +89,25 @@ const Product = () => {
                       <ul className='product__settings'>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Производитель:&nbsp;
+                            {constLanguagePack.Manufacturer[language]}:&nbsp;
                           </span>
                           {card?.attributes.Производитель}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Код модели:&nbsp;
+                            {constLanguagePack.ModelCode[language]}:&nbsp;
                           </span>
                           {card?.article}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Категория:&nbsp;
+                            {constLanguagePack.Series[language]}:&nbsp;
                           </span>
                           {card?.attributes.Категория}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Масштаб:&nbsp;
+                            {constLanguagePack.Scale[language]}:&nbsp;
                           </span>
                           {card?.scale}
                         </li>
@@ -115,19 +117,21 @@ const Product = () => {
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Место нахождения:&nbsp;
+                            {constLanguagePack.Location[language]}:&nbsp;
                           </span>
                           {card?.attributes.Местонахождение}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Упаковка:&nbsp;
+                            {constLanguagePack.Card[language]}:&nbsp;
                           </span>
-                          {card.is_damaged ? 'Повреждена' : 'Не повреждена'}
+                          {card.is_damaged
+                            ? constLanguagePack.Damaged[language]
+                            : constLanguagePack.Good[language]}
                         </li>
                         <li className='product__item'>
                           <span className='product__item_span'>
-                            Продажа:&nbsp;
+                            {constLanguagePack.Sale[language]}:&nbsp;
                           </span>
                           {card.is_for_sale ? 'Продается' : 'Не продается'}
                         </li>
@@ -170,14 +174,16 @@ const Product = () => {
                 </div>
               </div>
               <div className='product__description'>
-                <h3 className='product__description_title'>Описание:</h3>
+                <h3 className='product__description_title'>
+                  {constLanguagePack.Description[language]}:
+                </h3>
                 <p className='product__description_text'>
                   {card.description.length
                     ? card.description
-                    : 'Описание не добавлено'}
+                    : constLanguagePack.NoDescription[language]}
                 </p>
                 <p className='product__date'>
-                  Дата публикации {card.creation_date}
+                  {constLanguagePack.ReleaseDate[language]} {card.creation_date}
                 </p>
               </div>
             </>

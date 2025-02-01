@@ -13,10 +13,11 @@ import {
 } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Catalog = () => {
   const [activeView, setActiveView] = useState('list');
-  const { isLoading, setErrorPopup, setLoading } = useStore();
+  const { isLoading, setErrorPopup, setLoading, language } = useStore();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('all'); // Активный таб
   const [currentPage, setCurrentPage] = useState(1);
@@ -101,7 +102,9 @@ const Catalog = () => {
         <div className='catalog'>
           <div className='catalog__left-block'>
             <h2 className='catalog__title'>
-              {location.pathname === '/catalog' ? 'Каталог' : 'Мои модели'}
+              {location.pathname === '/catalog'
+                ? constLanguagePack.AddModel[language]
+                : constLanguagePack.MyModels[language]}
             </h2>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -122,7 +125,7 @@ const Catalog = () => {
                 navigate('/addmodel');
               }}
             >
-              Добавить модель
+              constLanguagePack.AddModel[language]
             </button>
           </div>
           <div className='catalog__right-block'>
@@ -132,7 +135,9 @@ const Catalog = () => {
               <CatalogTabs setActiveTab={setActiveTab} activeTab={activeTab} />
             )}
             <div className='catalog__box'>
-              <p className='catalog__sort'>Сортировка</p>
+              <p className='catalog__sort'>
+                constLanguagePack.Sorting[language]
+              </p>
               <div className='catalog__switcher'>
                 <button
                   className={`catalog__view-button catalog__view-tile ${activeView === 'tile' ? 'active' : ''}`}

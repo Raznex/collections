@@ -1,9 +1,10 @@
 import './Footer.scss';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Footer = () => {
-  const { isAuthenticated } = useStore();
+  const { isAuthenticated, language } = useStore();
   return (
     <footer className='footer'>
       <div className='footer__container'>
@@ -12,30 +13,32 @@ const Footer = () => {
           <ul className='footer__list'>
             <li className='footer__link'>
               <a href='/' className='footer__link'>
-                Главная
+                {constLanguagePack.Home[language]}
               </a>
             </li>
             <li className='footer__link'>
               <a href='/catalog' className='footer__link'>
-                Каталог
+                {constLanguagePack.Catalog[language]}
               </a>
             </li>
           </ul>
           {isAuthenticated ? (
             <>
               <ul className='footer__list'>
-                <li className='footer__link'>Мои модели</li>
+                <li className='footer__link'>
+                  {constLanguagePack.MyModels[language]}
+                </li>
                 {/*<li className='footer__link'>Избранное</li>*/}
               </ul>
               <ul className='footer__list'>
                 <li className='footer__link footer__link_acc'>
                   <a href='/profile' className='footer__link'>
-                    Аккаунт
+                    {constLanguagePack.Account[language]}
                   </a>
                 </li>
                 <li className='footer__link footer__link_acc'>
                   <a href='/logout' className='footer__link'>
-                    Выйти из аккаунта
+                    {constLanguagePack.LogOut[language]}
                   </a>
                 </li>
               </ul>

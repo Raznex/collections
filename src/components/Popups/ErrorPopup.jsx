@@ -3,10 +3,12 @@ import closeIcon from '../../assets/icons/closeIcon.svg';
 import errorIcon from '../../assets/icons/ErrorIcon.svg';
 import { useOutsideClick } from '../../utils/hooks/useOutsideClick';
 import './Popups.scss';
+import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const ErrorPopup = ({ isOpen, onClose }) => {
   const popupRef = useRef(null);
-
+  const { language } = useStore();
   useOutsideClick(popupRef, onClose);
 
   if (!isOpen) return null;
@@ -18,7 +20,9 @@ const ErrorPopup = ({ isOpen, onClose }) => {
           <img src={closeIcon} alt='Close' className='errorpopup__close-icon' />
         </button>
         <img src={errorIcon} alt='Error' className='errorpopup__img' />
-        <p className='errorpopup__text'>Произошла ошибка. Попробуйте снова.</p>
+        <p className='errorpopup__text'>
+          {constLanguagePack.ErrorOccurred[language]}
+        </p>
       </div>
     </div>
   );

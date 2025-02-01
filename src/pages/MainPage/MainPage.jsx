@@ -4,10 +4,11 @@ import { useForm } from 'react-hook-form';
 import CardList from '../../components/CardList/CardList';
 import { getAllModels } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const MainPage = () => {
   const [cards, setCards] = useState([]);
-  const { isLoading, setErrorPopup, setLoading } = useStore();
+  const { isLoading, setErrorPopup, setLoading, language } = useStore();
   const {
     register,
     handleSubmit,
@@ -34,7 +35,7 @@ const MainPage = () => {
     <div className='mainPage'>
       <div className='mainPage__search'>
         <a href='/catalog' className='mainPage__link'>
-          Тут будут производители, нажать для перехода
+          {constLanguagePack.ManufacturersProceed[language]}
         </a>
         <form
           // onSubmit={handleSubmit(onSubmit)}
@@ -42,7 +43,7 @@ const MainPage = () => {
         >
           <input
             type='text'
-            placeholder='Поиск'
+            placeholder={`${constLanguagePack.Search[language]}`}
             className='mainPage__search-input'
             {...register('searchName')}
           />

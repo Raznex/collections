@@ -5,9 +5,11 @@ import avatar from '../../assets/icons/panda.jpg';
 import LanguageButtons from '../../components/LanguageButtons/LanguageButtons';
 import { useStore } from '../../utils/store/store';
 import { logout } from '../../utils/autorize';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 const Header = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const { isAuthenticated, setErrorPopup, setIsAuthenticated } = useStore();
+  const { isAuthenticated, setErrorPopup, setIsAuthenticated, language } =
+    useStore();
   const navigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -55,10 +57,10 @@ const Header = () => {
           </a>
           <ul className='header__menu'>
             <a className='header__link' href='/catalog'>
-              Каталог
+              {constLanguagePack.Catalog[language]}
             </a>
             <a className='header__link' href='/my-models'>
-              Мои модели
+              {constLanguagePack.MyModels[language]}
             </a>
           </ul>
         </nav>
@@ -82,25 +84,25 @@ const Header = () => {
                   <ul className='menu'>
                     <li className='menu__list'>
                       <a href='/addmodel' className='menu__list'>
-                        Добавить модель
+                        {constLanguagePack.AddModel[language]}
                       </a>
                     </li>
                     <li className='menu__list'>
                       <a href='/my-models' className='menu__list'>
-                        Мои модели
+                        {constLanguagePack.MyModels[language]}
                       </a>
                     </li>
                     <li className='menu__line'></li>
                     <li className='menu__list menu__list_acc'>
                       <a href='/profile' className='menu__list'>
-                        Аккаунт
+                        {constLanguagePack.Account[language]}
                       </a>
                     </li>
                     <li
                       className='menu__list menu__list_logout'
                       onClick={() => logoutRedirect()}
                     >
-                      Выйти из аккаунта
+                      {constLanguagePack.LogOut[language]}
                     </li>
                   </ul>
                 </div>
@@ -109,10 +111,10 @@ const Header = () => {
           ) : (
             <>
               <a href='/register' className='header__autorization'>
-                Регистрация
+                {constLanguagePack.SignUp[language]}
               </a>
               <a href='/login' className='header__autorization'>
-                Войти
+                {constLanguagePack.SignIn[language]}
               </a>
             </>
           )}

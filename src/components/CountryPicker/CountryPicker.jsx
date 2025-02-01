@@ -1,12 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import './CountryPicker.scss';
+import { useStore } from '../../utils/store/store';
 
 const CountryPicker = ({ isEditing }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState('');
   const pickerRef = useRef(null);
+  const { language } = useStore();
 
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -19,8 +21,8 @@ const CountryPicker = ({ isEditing }) => {
   }, []);
 
   const handleSelect = (country) => {
-    setSelectedCountry(country); // Устанавливаем выбранную страну
-    setIsOpen(false); // Закрываем список
+    setSelectedCountry(country);
+    setIsOpen(false);
   };
 
   const handleClickOutside = (event) => {

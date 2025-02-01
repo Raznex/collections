@@ -17,6 +17,7 @@ import {
 import { useNavigate, useParams } from 'react-router-dom';
 import { useStore } from '../../utils/store/store';
 import ManufacturerSelect from '../Selects/ManufacturerSelect/ManufacturerSelect';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const EditForm = ({ location }) => {
   const [images, setImages] = useState([]);
@@ -36,7 +37,7 @@ const EditForm = ({ location }) => {
     description: '',
   });
 
-  const { setErrorPopup } = useStore();
+  const { setErrorPopup, language } = useStore();
   const cardId = useParams().id;
   const navigate = useNavigate();
 
@@ -137,7 +138,7 @@ const EditForm = ({ location }) => {
             <div className='editForm__inputs editForm__inputs_left1'>
               <div className='editForm__input'>
                 <label htmlFor='collectable_name' className='editForm__label'>
-                  Название модели
+                  {constLanguagePack.ModelName[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -150,7 +151,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.collectable_name}
-                        placeholder={'Название модели'}
+                        placeholder={`${constLanguagePack.ModelName[language]}`}
                       />
                     )}
                   />
@@ -163,7 +164,7 @@ const EditForm = ({ location }) => {
               </div>
               <div className='editForm__input'>
                 <label htmlFor='Производитель' className='editForm__label'>
-                  Производитель
+                  {constLanguagePack.Manufacturer[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -180,7 +181,7 @@ const EditForm = ({ location }) => {
                           'Poprace',
                           'Tarmac Works',
                         ]}
-                        placeholder='Выберите производителя'
+                        placeholder={`${constLanguagePack.SelectManufacturer[language]}`}
                       />
                     )}
                   />
@@ -195,7 +196,7 @@ const EditForm = ({ location }) => {
             <div className='editForm__inputs editForm__inputs_right1'>
               <div className='editForm__input'>
                 <label htmlFor='buy_price' className='editForm__label'>
-                  Цена
+                  {constLanguagePack.Price[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -205,7 +206,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.buy_price}
-                        placeholder={'Цена'}
+                        placeholder={`${constLanguagePack.Price[language]}`}
                       />
                     )}
                   />
@@ -229,7 +230,7 @@ const EditForm = ({ location }) => {
             <div className='editForm__inputs editForm__inputs_left2'>
               <div className='editForm__input'>
                 <label htmlFor='article' className='editForm__label'>
-                  Код модели
+                  {constLanguagePack.ModelCode[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -239,7 +240,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.article}
-                        placeholder={'Код модели'}
+                        placeholder={`${constLanguagePack.ModelCode[language]}`}
                       />
                     )}
                   />
@@ -250,7 +251,7 @@ const EditForm = ({ location }) => {
               </div>
               <div className='editForm__input'>
                 <label htmlFor='Категория' className='editForm__label'>
-                  Категория
+                  {constLanguagePack.Series[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -260,7 +261,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.Категория}
-                        placeholder={'Категория'}
+                        placeholder={`${constLanguagePack.Series[language]}`}
                       />
                     )}
                   />
@@ -273,7 +274,7 @@ const EditForm = ({ location }) => {
               </div>
               <div className='editForm__input'>
                 <label htmlFor='Год' className='editForm__label'>
-                  Год выпуска
+                  {constLanguagePack.YearIssue[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -283,7 +284,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.Год}
-                        placeholder={'Год выпуска'}
+                        placeholder={`${constLanguagePack.YearIssue[language]}`}
                       />
                     )}
                   />
@@ -294,7 +295,7 @@ const EditForm = ({ location }) => {
               </div>
               <div className='editForm__input'>
                 <label htmlFor='Местонахождение' className='editForm__label'>
-                  Масштаб
+                  {constLanguagePack.Scale[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -307,7 +308,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.scale}
-                        placeholder={'Масштаб'}
+                        placeholder={`${constLanguagePack.Scale[language]}`}
                       />
                     )}
                   />
@@ -318,7 +319,7 @@ const EditForm = ({ location }) => {
               </div>
               <div className='editForm__input'>
                 <label htmlFor='quantity' className='editForm__label'>
-                  Колличество
+                  {constLanguagePack.Count[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -331,7 +332,7 @@ const EditForm = ({ location }) => {
                       <CreateInput
                         {...field}
                         error={!!errors.quantity}
-                        placeholder={'Количество'}
+                        placeholder={`${constLanguagePack.Count[language]}`}
                       />
                     )}
                   />
@@ -344,7 +345,7 @@ const EditForm = ({ location }) => {
             <div className='editForm__inputs editForm__inputs_right2'>
               <div className='editForm__input'>
                 <label htmlFor='Местонахождение' className='editForm__label'>
-                  Место нахождения
+                  {constLanguagePack.Location[language]}
                 </label>
                 <div className='editForm__input-container'>
                   <Controller
@@ -355,7 +356,7 @@ const EditForm = ({ location }) => {
                         {...field}
                         error={!!errors.Местонахождение}
                         location={'location'}
-                        placeholder={'Место нахождения'}
+                        placeholder={`${constLanguagePack.Location[language]}`}
                       />
                     )}
                   />
@@ -367,14 +368,16 @@ const EditForm = ({ location }) => {
                 </div>
               </div>
               <div className='editForm__input editForm__input_radio'>
-                <p className='editForm__label'>Упаковка</p>
+                <p className='editForm__label'>
+                  {constLanguagePack.ConditionOfTheModel[language]}
+                </p>
                 <div className='editForm__radio-buttons'>
                   <div className='editForm__radio-btn'>
                     <label htmlFor='radio-1' className='editForm__radio-label'>
                       <div
                         className={`editForm__circle ${damage === 'off' ? 'editForm__circle_active' : ''}`}
                       ></div>
-                      Не повреждена
+                      {constLanguagePack.Damaged[language]}
                     </label>
                     <input
                       type='radio'
@@ -389,7 +392,7 @@ const EditForm = ({ location }) => {
                       <div
                         className={`editForm__circle ${damage === 'on' ? 'editForm__circle_active' : ''}`}
                       ></div>
-                      Повреждена
+                      {constLanguagePack.Good[language]}
                     </label>
                     <input
                       type='radio'
@@ -403,7 +406,9 @@ const EditForm = ({ location }) => {
               </div>
             </div>
           </div>
-          <h3 className='editForm__title'>Фотографии</h3>
+          <h3 className='editForm__title'>
+            {constLanguagePack.Photos[language]}
+          </h3>
           <div className='editForm__image-preview'>
             {images.length
               ? images.map((image, index) => (
@@ -434,7 +439,9 @@ const EditForm = ({ location }) => {
               onChange={handleImageChange}
             />
           </div>
-          <h3 className='editForm__title'>Описание</h3>
+          <h3 className='editForm__title'>
+            {constLanguagePack.Description[language]}
+          </h3>
           <div className='editForm__info'>
             <Controller
               name='description'
@@ -442,7 +449,7 @@ const EditForm = ({ location }) => {
               render={({ field }) => (
                 <textarea
                   {...field}
-                  placeholder='Описание модели'
+                  placeholder={`${constLanguagePack.Description[language]}`}
                   className='editForm__textarea'
                 />
               )}
@@ -462,12 +469,12 @@ const EditForm = ({ location }) => {
                   onClick={() => deleteCard()}
                   className='editForm__button editForm__button_delete'
                 >
-                  Удалить
+                  {constLanguagePack.Delete[language]}
                 </button>
               </>
             ) : (
               <button type={'submit'} className='editForm__button'>
-                Добавить модель
+                {constLanguagePack.AddModel[language]}
               </button>
             )}
           </div>

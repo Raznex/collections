@@ -6,6 +6,7 @@ import { register, sendVerificationCode } from '../../utils/autorize';
 import CSRFToken from '../../utils/csrfToken/csrfToken';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../../utils/store/store';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Register = () => {
   const [hasCode, setHasCode] = useState(false);
@@ -24,7 +25,7 @@ const Register = () => {
       code: '',
     },
   });
-  const { setErrorPopup } = useStore();
+  const { setErrorPopup, language } = useStore();
   const password = watch('password');
   const confirm_password = watch('confirm_password');
 
@@ -48,7 +49,7 @@ const Register = () => {
 
   return (
     <div className='register'>
-      <h1 className='register__title'>Регистрация</h1>
+      <h1 className='register__title'>{constLanguagePack.SignUp[language]}</h1>
       <form
         onSubmit={hasCode ? handleSubmit(onSubmit) : handleSubmit(sendCode)}
         className='register__form'
@@ -65,7 +66,7 @@ const Register = () => {
                 {...field}
                 type={'text'}
                 error={!!errors.email}
-                placeholder={'Email'}
+                placeholder={`${constLanguagePack.Email[language]}`}
               />
             )}
           />
@@ -85,7 +86,7 @@ const Register = () => {
                 {...field}
                 type={'text'}
                 error={!!errors.userName}
-                placeholder={'UserName/Никнейм'}
+                placeholder={`${constLanguagePack.Email[language]}/${constLanguagePack.NickName[language]}`}
               />
             )}
           />
@@ -105,7 +106,7 @@ const Register = () => {
                 type={'password'}
                 {...field}
                 error={!!errors.password}
-                placeholder={'Password'}
+                placeholder={`${constLanguagePack.Password[language]}`}
               />
             )}
           />
@@ -118,7 +119,8 @@ const Register = () => {
             name='confirm_password'
             control={control}
             rules={{
-              validate: (value) => value === password || 'Пароли не совпадают',
+              validate: (value) =>
+                value === password || constLanguagePack.PasswordError[language],
               required: 'Поле обязательно для заполнения',
             }}
             render={({ field }) => (
@@ -126,7 +128,7 @@ const Register = () => {
                 type={'password'}
                 {...field}
                 error={!!errors.confirm_password}
-                placeholder={'Repeat password'}
+                placeholder={`${constLanguagePack.RepeatPassword[language]}`}
               />
             )}
           />
@@ -136,7 +138,9 @@ const Register = () => {
         </div>
         {hasCode ? (
           <div className='register__input-container'>
-            <p className='register__text'>Код отправлен вам на почту</p>
+            <p className='register__text'>
+              {constLanguagePack.CodeHasBeenSent[language]}
+            </p>
             <Controller
               name='code'
               control={control}
@@ -148,7 +152,7 @@ const Register = () => {
                   {...field}
                   type={'text'}
                   error={!!errors.code}
-                  placeholder={'Введите код'}
+                  placeholder={`${constLanguagePack.WriteCode[language]}`}
                 />
               )}
             />
@@ -162,16 +166,18 @@ const Register = () => {
 
         {hasCode ? (
           <button type='submit' className='register__submit'>
-            Зарегистрироваться
+            {constLanguagePack.SignUp[language]}
           </button>
         ) : (
           <button type='submit' className='register__submit'>
-            Отправить код подтверждения
+            {constLanguagePack.SendVerificationCode[language]}
           </button>
         )}
         <a href='/login' className='register__change-password'>
-          Уже зарегистрированы?{' '}
-          <span className='register__change-password_span'>Войти</span>
+          {constLanguagePack.HaveAccountSignIn[language]}
+          <span className='register__change-password_span'>
+            {constLanguagePack.SignIn[language]}
+          </span>
         </a>
       </form>
     </div>

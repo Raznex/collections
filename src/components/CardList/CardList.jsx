@@ -24,7 +24,7 @@ const CardList = ({
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setCurrentPage(pageNumber);
   };
-
+  const { language } = useStore();
   return (
     <div className='cards'>
       <div
