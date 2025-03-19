@@ -5,7 +5,7 @@ export const useStore = create((set) => ({
   isErrorPopupOpen: false,
   isRegisterPopupOpen: false,
   isAuthenticated: false,
-  language: 'rus',
+  language: 'eng',
 
   setLoading: (value) => set({ loading: value }),
   setErrorPopup: (isOpen) => set({ isErrorPopupOpen: isOpen }),

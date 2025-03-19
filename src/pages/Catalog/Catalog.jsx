@@ -16,7 +16,7 @@ import CatalogTabs from '../../components/CatalogTabs/CatalogTabs';
 import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Catalog = () => {
-  const [activeView, setActiveView] = useState('list');
+  const [activeView, setActiveView] = useState('tile');
   const { isLoading, setErrorPopup, setLoading, language } = useStore();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('all'); // Активный таб
@@ -24,6 +24,7 @@ const Catalog = () => {
   const [cards, setCards] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [search, setSearch] = useState('');
+  const [modelsPerPage, setModelsPerPage] = useState(1);
   const location = useLocation();
   const maxCards = activeView === 'list' ? 8 : 21;
 
@@ -45,6 +46,9 @@ const Catalog = () => {
     if (location.pathname === '/catalog') {
       getAllModels(currentPage, maxCards)
         .then((data) => {
+          if (data.all_models.length) {
+            setModelsPerPage(data.all_models.length);
+          }
           const updatedCards = data.all_models.map((card) => ({
             ...card,
             isLiked: data.favorite_models.includes(card.id),
@@ -125,7 +129,7 @@ const Catalog = () => {
                 navigate('/addmodel');
               }}
             >
-              constLanguagePack.AddModel[language]
+              {constLanguagePack.AddModel[language]}
             </button>
           </div>
           <div className='catalog__right-block'>
@@ -136,7 +140,10 @@ const Catalog = () => {
             )}
             <div className='catalog__box'>
               <p className='catalog__sort'>
-                constLanguagePack.Sorting[language]
+                {constLanguagePack.Sorting[language]}
+              </p>
+              <p className='catalog__sort'>
+                {constLanguagePack.ModelsPerPage[language]}: {modelsPerPage}
               </p>
               <div className='catalog__switcher'>
                 <button

@@ -45,10 +45,10 @@ const App = () => {
                 isOpen={isErrorPopupOpen}
                 onClose={() => setErrorPopup(false)}
               />
-              <RegisterPopup
-                isOpen={isRegisterPopupOpen}
-                onClose={() => setRegisterPopup(false)}
-              />
+              {/*<RegisterPopup*/}
+              {/*  isOpen={isRegisterPopupOpen}*/}
+              {/*  onClose={() => setRegisterPopup(false)}*/}
+              {/*/>*/}
             </main>
             <Footer />
           </>

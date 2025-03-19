@@ -106,7 +106,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className='header__account'>
-          <LanguageButtons />
+          {/*<LanguageButtons />*/}
           {isAuthenticated ? (
             <div className='header__account-settings'>
               <div
@@ -139,24 +139,24 @@ const Header = () => {
                         {constLanguagePack.Account[language]}
                       </a>
                     </li>
-                    <li
-                      className='menu__list menu__list_logout'
-                      onClick={() => logoutRedirect()}
-                    >
-                      {constLanguagePack.LogOut[language]}
-                    </li>
+                    {/*<li*/}
+                    {/*  className='menu__list menu__list_logout'*/}
+                    {/*  onClick={() => logoutRedirect()}*/}
+                    {/*>*/}
+                    {/*  {constLanguagePack.LogOut[language]}*/}
+                    {/*</li>*/}
                   </ul>
                 </div>
               </div>
             </div>
           ) : (
             <>
-              <a href='/register' className='header__autorization'>
-                {constLanguagePack.SignUp[language]}
-              </a>
-              <a href='/login' className='header__autorization'>
-                {constLanguagePack.SignIn[language]}
-              </a>
+              {/*<a href='/register' className='header__autorization'>*/}
+              {/*  {constLanguagePack.SignUp[language]}*/}
+              {/*</a>*/}
+              {/*<a href='/login' className='header__autorization'>*/}
+              {/*  {constLanguagePack.SignIn[language]}*/}
+              {/*</a>*/}
             </>
           )}
         </div>

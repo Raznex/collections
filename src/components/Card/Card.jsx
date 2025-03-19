@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './Card.scss';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import productImage from '../../assets/icons/panda.jpg';
 import { addModelToFavourite } from '../../utils/api';
 import { useStore } from '../../utils/store/store';
 import nophoto from '../../assets/icons/nophoto.png';
+import { constLanguagePack } from '../../utils/Language/LanguagePack';
 
 const Card = ({ card, view, tab }) => {
   const navigate = useNavigate();
@@ -67,8 +67,8 @@ const Card = ({ card, view, tab }) => {
           </div>
           <p className='card__info'>
             {view === 'list'
-              ? `Производитель: ${card.attributes?.Производитель}`
-              : `Категория: ${card.attributes?.Категория}`}
+              ? `${constLanguagePack.Manufacturer[language]} : ${card.attributes?.Производитель}`
+              : `${constLanguagePack.Series[language]}: ${card.attributes?.Категория}`}
           </p>
           {view === 'list' && (
             <p className='card__description-text'>{card?.description}</p>

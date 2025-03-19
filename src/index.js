@@ -35,39 +35,39 @@ const router = createBrowserRouter([
         path: 'product/:id',
         element: <Product />,
       },
-      {
-        element: <RedirectUnAuth />,
-        children: [
-          {
-            path: 'login',
-            element: <Login />,
-          },
-          {
-            path: 'register',
-            element: <Register />,
-          },
-        ],
-      },
+      // {
+      //   element: <RedirectUnAuth />,
+      //   children: [
+      //     {
+      //       path: 'login',
+      //       element: <Login />,
+      //     },
+      //     {
+      //       path: 'register',
+      //       element: <Register />,
+      //     },
+      //   ],
+      // },
       // Приватные маршруты
       {
         element: <RedirectAuth />,
         children: [
-          {
-            path: 'editmodel/:id',
-            element: <EditingModel />,
-          },
-          {
-            path: 'addmodel',
-            element: <AddModel />,
-          },
-          {
-            path: 'profile',
-            element: <Profile />,
-          },
-          {
-            path: 'my-models',
-            element: <Catalog />,
-          },
+          // {
+          //   path: 'editmodel/:id',
+          //   element: <EditingModel />,
+          // },
+          // {
+          //   path: 'addmodel',
+          //   element: <AddModel />,
+          // },
+          // {
+          //   path: 'profile',
+          //   element: <Profile />,
+          // },
+          // {
+          //   path: 'my-models',
+          //   element: <Catalog />,
+          // },
         ],
       },
       {

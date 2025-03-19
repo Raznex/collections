@@ -55,7 +55,9 @@ const Footer = () => {
               {isAuthenticated ? (
                 <>
                   <ul className='footer__list'>
-                    <li className='footer__link'>{constLanguagePack.MyModels[language]}</li>
+                    <li className='footer__link'>
+                      {constLanguagePack.MyModels[language]}
+                    </li>
                   </ul>
                   <ul className='footer__list'>
                     <li className='footer__link footer__link_acc'>
@@ -71,7 +73,7 @@ const Footer = () => {
                   </ul>
                 </>
               ) : null}
-              <LanguageButtons />
+              {/*<LanguageButtons />*/}
             </>
           )}
         </div>

@@ -11,15 +11,14 @@
   align-items: $align-items;
 }
 
-@mixin block($max-width: 1440px) {
+@mixin block($max-width: 1440px, $mobile-padding: 0 15px) {
   font-family: 'Inter', Arial, serif;
   width: 100%;
   max-width: $max-width;
   padding: 0 50px 0;
 
   @media (max-width: 768px) {
-    padding: 0 30px 0;
-    max-width: $max-width;
+    padding: $mobile-padding;
   }
 }
 
@@ -28,7 +27,9 @@
   $font-size: 14px,
   $line-height: 16px,
   $color: $black,
-  $text-align: center
+  $text-align: center,
+  $mobile-font-size: 12px,
+  $mobile-line-height: 14px
 ) {
   font-weight: $font-weight;
   font-size: $font-size;
@@ -36,9 +37,9 @@
   color: $color;
   text-align: $text-align;
 
-  @media (max-width: 768px) {
-    font-size: 12px;
-    line-height: 14.52px;
+  @media screen and (max-width: 768px) {
+    font-size: $mobile-font-size;
+    line-height: $mobile-line-height;
   }
 }
 
@@ -47,7 +48,9 @@
   $padding: 10px,
   $background-color: transparent,
   $background-color-hover: $black,
-  $color: white
+  $color: white,
+  $mobile-border-radius: 3px,
+  $mobile-padding: 5px
 ) {
   border-radius: $border-radius;
   padding: $padding;
@@ -64,8 +67,8 @@
     color: $color;
   }
   @media (max-width: 768px) {
-    border-radius: 3px;
-    padding: 5px;
+    border-radius: $mobile-border-radius;
+    padding: $mobile-padding;
   }
 }
 

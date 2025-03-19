@@ -279,4 +279,8 @@ export const constLanguagePack = {
     eng: 'To perform this action you need to log in',
     rus: ' Для выполнения данного действия необходимо авторизоваться',
   },
+  ModelsPerPage: {
+    eng: 'Models per page',
+    rus: 'Моделей на странице',
+  },
 };

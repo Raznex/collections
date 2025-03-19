@@ -73,7 +73,7 @@ const Product = () => {
           ) : (
             <>
               <button onClick={() => navigate(-1)} className='product__back'>
-                Назад
+                {constLanguagePack.Back[language]}
               </button>
               <p className='product__error'>{error}</p>
               <div className='product__container'>
@@ -112,7 +112,9 @@ const Product = () => {
                           {card?.scale}
                         </li>
                         <li className='product__item'>
-                          <span className='product__item_span'>Год:&nbsp;</span>
+                          <span className='product__item_span'>
+                            {constLanguagePack.Year[language]}:&nbsp;
+                          </span>
                           {card?.attributes.Год}
                         </li>
                         <li className='product__item'>
@@ -162,7 +164,7 @@ const Product = () => {
                         ></button>
                       </div>
                       <p className='product__price'>
-                        Цена:{' '}
+                        {constLanguagePack.Price[language]}:{' '}
                         <span className='product__price_span'>
                           {card.buy_price ? card.buy_price : 0}&nbsp;
                           {card.buy_price_currency}
@@ -170,7 +172,7 @@ const Product = () => {
                       </p>
                     </div>
                   </div>
-                  <Auction cardId={cardId} card={card} />
+                  {/*<Auction cardId={cardId} card={card} />*/}
                 </div>
               </div>
               <div className='product__description'>
